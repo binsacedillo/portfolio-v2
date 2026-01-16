@@ -122,7 +122,7 @@ export default function Hero() {
                     {/* Primary CTA - High contrast */}
                     <button
                         onClick={scrollToProjects}
-                        className="group inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-sky-500/50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-sky-500/50"
+                        className="group inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-sky-500/50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-sky-500/50 cursor-pointer"
                         aria-label="View my projects"
                     >
                         View My Work
