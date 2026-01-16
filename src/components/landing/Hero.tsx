@@ -7,7 +7,7 @@ import JapaneseMorphingTitle from "./JapaneseMorphingTitle";
 
 export default function Hero() {
     const [imageError, setImageError] = useState(false);
-    
+
     const scrollToProjects = () => {
         const projectsSection = document.getElementById("projects");
         projectsSection?.scrollIntoView({ behavior: "smooth" });
