@@ -13,11 +13,6 @@ export default function Hero() {
         projectsSection?.scrollIntoView({ behavior: "smooth" });
     };
 
-    const scrollToContact = () => {
-        const footer = document.querySelector("footer");
-        footer?.scrollIntoView({ behavior: "smooth" });
-    };
-
     return (
         <section
             className="relative min-h-screen w-full flex flex-col items-center justify-center bg-slate-950 px-6 py-20"
@@ -135,14 +130,14 @@ export default function Hero() {
                     </button>
 
                     {/* Secondary CTA */}
-                    <button
-                        onClick={scrollToContact}
+                    <a
+                        href="mailto:beansgioacedillo@gmail.com"
                         className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold px-8 py-4 rounded-lg transition-all border border-slate-700 hover:border-slate-600 focus:outline-none focus:ring-4 focus:ring-slate-600/50"
-                        aria-label="Contact me"
+                        aria-label="Contact me via email"
                     >
                         <Mail size={18} />
                         Get In Touch
-                    </button>
+                    </a>
                 </motion.div>
 
                 {/* Social links with proper labels (Accessibility) */}
