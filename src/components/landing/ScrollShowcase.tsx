@@ -38,7 +38,7 @@ const projects: Project[] = [
         icon: <Languages size={32} />,
         tags: ["React", "React Router", "i18n", "Responsive Design"],
         image: "/japaneselangwebsite.jpg",
-        repoUrl: "https://github.com/yourusername/japanese-lang",
+        repoUrl: "https://github.com/binsacedillo/JapLanguageLearningWebsite",
     },
     {
         title: "News Website",
@@ -46,7 +46,7 @@ const projects: Project[] = [
         icon: <Newspaper size={32} />,
         tags: ["React", "Carousel", "Search", "Responsive"],
         image: "/newswebsite.png",
-        repoUrl: "https://github.com/yourusername/news-website",
+        repoUrl: "https://github.com/binsacedillo/newsWebsite",
     },
     {
         title: "Idol Group Website",
@@ -54,7 +54,7 @@ const projects: Project[] = [
         icon: <Users size={32} />,
         tags: ["React", "Styled Components", "React Router"],
         image: "/idolwebsite.png",
-        repoUrl: "https://github.com/yourusername/idol-group",
+        repoUrl: "https://github.com/binsacedillo/IdolWebsite",
     },
 ];
 
