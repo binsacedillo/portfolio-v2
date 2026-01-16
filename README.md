@@ -21,3 +21,12 @@ npm run dev
 
 ## Deployment
 Deploy on Vercel or your preferred platform.
+
+## Backend Ready for Features
+The portfolio includes a production-ready backend stack (tRPC + Prisma + PostgreSQL) intentionally kept lean for a focused showcase. This enables future features like:
+- Contact form with message persistence
+- Blog or case studies from database
+- Admin dashboard for dynamic content
+- Portfolio analytics and visitor tracking
+
+This architecture demonstrates full-stack capability while maintaining a clean, fast frontend experience.
