@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ExternalLink, Github, Star, Plane, Newspaper, Users, Languages } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -57,28 +57,6 @@ const projects: Project[] = [
         repoUrl: "https://github.com/binsacedillo/IdolWebsite",
     },
 ];
-
-const cardVariants = {
-    hidden: { y: 50, opacity: 0, scale: 0.95 },
-    visible: {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-    },
-    exit: {
-        y: 50,
-        opacity: 0,
-        scale: 0.95,
-    },
-};
-
-const gridVariants = {
-    visible: {
-        transition: {
-            staggerChildren: 0.2,
-        },
-    },
-};
 
 const featuredCardVariants = {
     hidden: { opacity: 0, y: 60, scale: 0.9 },
@@ -218,100 +196,87 @@ export function ScrollShowcase() {
             )}
 
             {/* Regular Projects Grid */}
-            <motion.div
+            <div
                 className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl"
-                variants={gridVariants}
-                initial="hidden"
-                animate="visible"
             >
-                <AnimatePresence>
-                    {regularProjects.map((project, idx) => (
-                        <motion.div
-                            key={project.title + idx}
-                            className="group bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl overflow-hidden shadow-lg transition-all hover:border-sky-500/50"
-                            variants={cardVariants}
-                            whileInView="visible"
-                            initial="hidden"
-                            exit="exit"
-                            viewport={{ once: true, amount: 0.2 }}
-                            whileHover={{ y: -10, scale: 1.02 }}
-                            transition={{ type: "spring" as const, stiffness: 150, damping: 20 }}
-                        >
-                            {/* Project Image with Hover Overlay */}
-                            <div className="relative aspect-video w-full bg-slate-800 overflow-hidden">
-                                {project.image ? (
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover"
-                                        onError={(e) => {
-                                            // Hide image container on error
-                                            const target = e.target as HTMLImageElement;
-                                            target.style.display = 'none';
-                                        }}
-                                    />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-sky-400">
-                                        {project.icon}
-                                    </div>
-                                )}
-                                
-                                {/* Hover Overlay */}
-                                <div className="absolute inset-0 bg-slate-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                                    {project.liveUrl && (
-                                        <a
-                                            href={project.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-4 py-2 rounded-lg transition-all shadow-lg z-10"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <ExternalLink size={16} />
-                                            View
-                                        </a>
-                                    )}
-                                    {project.repoUrl && (
-                                        <a
-                                            href={project.repoUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-semibold px-4 py-2 rounded-lg transition-all z-10"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <Github size={16} />
-                                            Code
-                                        </a>
-                                    )}
+                {regularProjects.map((project, idx) => (
+                    <div
+                        key={project.title + idx}
+                        className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-colors duration-300 flex flex-col h-full"
+                    >
+                        {/* Project Image */}
+                        <div className="relative aspect-video w-full bg-slate-800 overflow-hidden shrink-0">
+                            {project.image ? (
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover"
+                                    loading="lazy"
+                                    onError={(e) => {
+                                        // Hide image container on error
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = 'none';
+                                    }}
+                                />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center text-sky-400">
+                                    {project.icon}
                                 </div>
+                            )}
+                        </div>
+
+                        {/* Card Content */}
+                        <div className="p-6 flex flex-col flex-grow">
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="text-sky-400 shrink-0">{project.icon}</div>
+                                <h2 className="text-lg font-semibold text-white">{project.title}</h2>
                             </div>
+                            <p className="text-slate-300 text-sm mb-4 line-clamp-3 flex-grow">{project.description}</p>
 
-                            {/* Card Content */}
-                            <div className="p-6 flex flex-col">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <div className="text-sky-400">{project.icon}</div>
-                                    <h2 className="text-xl font-semibold text-white">{project.title}</h2>
+                            {/* Tags */}
+                            {project.tags && (
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                    {project.tags.map((tag, idx) => (
+                                        <span
+                                            key={idx}
+                                            className="bg-slate-800/70 text-slate-400 text-xs px-2 py-1 rounded-md"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
-                                <p className="text-slate-300 text-sm mb-4 line-clamp-2">{project.description}</p>
+                            )}
 
-                                {/* Tags for regular projects */}
-                                {project.tags && (
-                                    <div className="flex flex-wrap gap-2 mt-auto">
-                                        {project.tags.map((tag, idx) => (
-                                            <span
-                                                key={idx}
-                                                className="bg-slate-800/70 text-slate-400 text-xs px-2 py-1 rounded-md"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+                            {/* Action Buttons */}
+                            <div className="flex gap-3 mt-auto">
+                                {project.liveUrl && (
+                                    <a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 text-sm"
+                                    >
+                                        <ExternalLink size={16} />
+                                        View
+                                    </a>
+                                )}
+                                {project.repoUrl && (
+                                    <a
+                                        href={project.repoUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 text-sm"
+                                    >
+                                        <Github size={16} />
+                                        Code
+                                    </a>
                                 )}
                             </div>
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
-            </motion.div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </motion.section>
     );
 }
