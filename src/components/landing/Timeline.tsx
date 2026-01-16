@@ -77,7 +77,7 @@ export default function Timeline() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         {timeline.map((event) => (
           <motion.div
@@ -86,7 +86,7 @@ export default function Timeline() {
             variants={eventVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <div className="flex flex-col items-center justify-center">
               <div className="text-sky-400 mb-2">{event.icon}</div>

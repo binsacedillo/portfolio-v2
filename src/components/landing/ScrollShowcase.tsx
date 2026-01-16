@@ -123,7 +123,7 @@ export function ScrollShowcase() {
                     variants={featuredCardVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false, amount: 0.2 }}
+                    viewport={{ once: true, amount: 0.2 }}
                 >
                     <div className="relative bg-linear-to-br from-sky-900/40 via-slate-900/50 to-purple-900/40 backdrop-blur-sm border-2 border-sky-500/30 rounded-2xl p-8 md:p-12 shadow-2xl overflow-hidden">
                         {/* Star Badge */}
@@ -233,9 +233,9 @@ export function ScrollShowcase() {
                             whileInView="visible"
                             initial="hidden"
                             exit="exit"
-                            viewport={{ once: false, amount: 0.2 }}
+                            viewport={{ once: true, amount: 0.2 }}
                             whileHover={{ y: -10, scale: 1.02 }}
-                            transition={{ type: "spring" as const, stiffness: 300, damping: 30 }}
+                            transition={{ type: "spring" as const, stiffness: 150, damping: 20 }}
                         >
                             {/* Project Image with Hover Overlay */}
                             <div className="relative aspect-video w-full bg-slate-800 overflow-hidden">
