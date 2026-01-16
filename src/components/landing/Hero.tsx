@@ -153,7 +153,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.6 }}
                 >
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/binsacedillo"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Visit my GitHub profile"
@@ -162,7 +162,7 @@ export default function Hero() {
                         <Github size={24} />
                     </a>
                     <a
-                        href="https://linkedin.com/in/yourusername"
+                        href="www.linkedin.com/in/vince-gio-acedillo-449688318"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Visit my LinkedIn profile"
