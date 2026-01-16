@@ -227,12 +227,12 @@ export function ScrollShowcase() {
                         </div>
 
                         {/* Card Content */}
-                        <div className="p-6 flex flex-col flex-grow">
+                        <div className="p-6 flex flex-col grow">
                             <div className="flex items-center gap-3 mb-3">
                                 <div className="text-sky-400 shrink-0">{project.icon}</div>
                                 <h2 className="text-lg font-semibold text-white">{project.title}</h2>
                             </div>
-                            <p className="text-slate-300 text-sm mb-4 line-clamp-3 flex-grow">{project.description}</p>
+                            <p className="text-slate-300 text-sm mb-4 line-clamp-3 grow">{project.description}</p>
 
                             {/* Tags */}
                             {project.tags && (
