@@ -13,7 +13,7 @@ export default function BackToTop() {
         };
 
         // Throttle scroll events for better performance
-        let timeoutId: NodeJS.Timeout;
+        let timeoutId: ReturnType<typeof setTimeout>;
         const handleScroll = () => {
             clearTimeout(timeoutId);
             timeoutId = setTimeout(toggleVisibility, 100);
