@@ -157,7 +157,7 @@ export default function Hero() {
                         <Github size={24} />
                     </a>
                     <a
-                        href="www.linkedin.com/in/vince-gio-acedillo-449688318"
+                        href="https://www.linkedin.com/in/vince-gio-acedillo-449688318"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Visit my LinkedIn profile"
