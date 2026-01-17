@@ -37,9 +37,8 @@ const timeline: TimelineEvent[] = [
     title: "FEU Tech - BS in Information Technology",
     description: "Currently pursuing Bachelor of Science in Information Technology with Web and Mobile Applications specialization at FEU Institute of Technology.",
     icon: <GraduationCap size={28} />,
-    // TODO: Uncomment and add your logo file to /public/feu-tech-logo.png
-    // logo: "/feu-tech-logo.png",
-    // logoAlt: "FEU Institute of Technology logo",
+    logo: "/feu-tech-logo.png",
+    logoAlt: "FEU Institute of Technology logo",
   },
 ];
 
