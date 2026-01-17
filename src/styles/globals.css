@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Portfolio Theme Colors */
+  --color-portfolio-sky: oklch(0.62 0.2 232);
+  --color-portfolio-purple: oklch(0.55 0.25 280);
+  
+  /* Gradients as custom properties */
+  --gradient-card-bg: linear-gradient(to bottom right, 
+    oklch(0.35 0.1 232 / 0.4), 
+    oklch(0.25 0.05 240 / 0.5), 
+    oklch(0.35 0.15 280 / 0.4));
+  --gradient-divider: linear-gradient(to right, 
+    transparent, 
+    oklch(0.62 0.2 232 / 0.3), 
+    transparent);
+  
+  /* Shadows */
+  --shadow-card-hover: 0 25px 50px -12px oklch(0.62 0.2 232 / 0.1);
+  --shadow-featured-hover: 0 25px 50px -12px oklch(0.62 0.2 232 / 0.1);
 }
