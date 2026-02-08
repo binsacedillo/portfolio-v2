@@ -92,7 +92,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                    Building modern, scalable web applications with clean code and exceptional user experiences. Specialized in React, Next.js, Vite, and TypeScript.
+                    Building modern, scalable web applications with clean code and exceptional user experiences. Specialized in full-stack development with React, Next.js, TypeScript, and Python.
                 </motion.p>
 
                 {/* Key skills/badges */}
@@ -102,7 +102,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    {["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma"].map((skill) => (
+                    {["Next.js", "React", "TypeScript", "Python", "FastAPI", "Tailwind CSS", "Prisma"].map((skill) => (
                         <span
                             key={skill}
                             className="bg-slate-800/70 border border-slate-700 text-slate-200 text-sm px-4 py-2 rounded-lg font-medium"
