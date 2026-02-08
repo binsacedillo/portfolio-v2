@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowDown, Mail, Github, Linkedin } from "lucide-react";
+import { ArrowDown, Mail, GithubIcon, LinkedinIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import JapaneseMorphingTitle from "./JapaneseMorphingTitle";
@@ -154,7 +154,7 @@ export default function Hero() {
                         aria-label="Visit my GitHub profile"
                         className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
                     >
-                        <Github size={24} />
+                        <GithubIcon size={24} />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/vince-gio-acedillo-449688318"
@@ -163,7 +163,17 @@ export default function Hero() {
                         aria-label="Visit my LinkedIn profile"
                         className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
                     >
-                        <Linkedin size={24} />
+                        <LinkedinIcon size={24} />
+                    </a>
+                    <a
+                        href="https://www.facebook.com/binsAced"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit my Facebook profile"
+                        className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
+                    >
+                        {/* Facebook icon */}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 5.019 3.676 9.167 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.876h2.773l-.443 2.89h-2.33v6.987C18.324 21.167 22 17.019 22 12z"/></svg>
                     </a>
                 </motion.div>
             </div>
