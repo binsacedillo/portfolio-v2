@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Portfolio - Vince Gio",
   description: "Full-stack portfolio showcasing Next.js, tRPC, Prisma, Tailwind, and Framer Motion.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
   openGraph: {
     title: "Portfolio - Vince Gio",
     description:

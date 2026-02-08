@@ -1,5 +1,5 @@
 import React from "react";
-import { Languages, Newspaper, Plane, Users } from "lucide-react";
+import { Languages, Newspaper, Plane, Users, Activity } from "lucide-react";
 
 export type Project = {
     title: string;
@@ -42,6 +42,25 @@ export const projects: Project[] = [
             "Full-Stack",
             "Aviation",
         ],
+    },
+    {
+        title: "Secure FHIR Interoperability Layer",
+        description: "A specialized backend service built with FastAPI that acts as a secure gateway to HL7 FHIR servers. Features include patient demographics search, clinical data aggregation, and a custom Clinical Decision Support engine for allergy conflict detection.",
+        icon: <Activity size={32} />,
+        category: "Backend",
+        tags: [
+            "Python",
+            "FastAPI",
+            "HL7 FHIR",
+            "REST API",
+            "Clinical Data",
+            "Security",
+            "Backend",
+            "Interoperability",
+        ],
+        image: "/fhirproject.jpg",
+        repoUrl: "https://github.com/yourusername/fhir_project",
+        liveUrl: "https://fhir-project-zeta.vercel.app",
     },
     {
         title: "Japanese Language Learning Website",
