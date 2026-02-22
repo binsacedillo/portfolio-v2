@@ -1,32 +1,119 @@
-# portfolio-v2
+# 🚀 Vince Gio N. Acedillo | Full-Stack Portfolio
 
-Personal portfolio website (v2) built with Next.js, TypeScript, tRPC, Prisma, Tailwind CSS, and Framer Motion.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-6.6-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
+[![tRPC](https://img.shields.io/badge/tRPC-11-2596be?style=for-the-badge&logo=trpc)](https://trpc.io/)
 
-## Features
-- ISO-compliant Hero section with optimized image and accessibility
-- Scroll-animated Timeline with education milestones and logo support
-- Projects showcase with featured project and image-based cards
-- Next.js Image optimization for performance (LCP/CLS)
+A premium, high-performance personal portfolio website built with the **T3 Stack**. This project showcases modern web development practices, focusing on performance, accessibility (ISO 9241 compliant), and smooth user experiences.
 
-## Development
-```bash
-npm install
-npm run dev
-```
+---
 
-## Tech Stack
-- Next.js, React, TypeScript
-- tRPC, Prisma, PostgreSQL
-- Tailwind CSS, Framer Motion
+## ✨ Key Features
 
-## Deployment
-Deploy on Vercel or your preferred platform.
+- **🎯 ISO-Compliant Hero Section**: Optimized LCP/CLS with specialized image handling and WCAG AAA color contrast.
+- **🏮 Japanese Morphing Title**: A unique, aesthetic animation blending traditional style with modern web technology.
+- **📜 Scroll-Animated Timeline**: Interactive education and milestone tracking with smooth Framer Motion transitions.
+- **📂 Dynamic Projects Showcase**: Featured project highlights and responsive image-based cards for a diverse portfolio.
+- **⚡ High Performance**: Leveraging Next.js 15 App Router, Server Components, and optimized image processing.
+- **🛠️ Full-Stack Ready**: Integrated tRPC, Prisma, and NextAuth for seamless backend capabilities.
 
-## Backend Ready for Features
-The portfolio includes a production-ready backend stack (tRPC + Prisma + PostgreSQL) intentionally kept lean for a focused showcase. This enables future features like:
-- Contact form with message persistence
-- Blog or case studies from database
-- Admin dashboard for dynamic content
-- Portfolio analytics and visitor tracking
+---
 
-This architecture demonstrates full-stack capability while maintaining a clean, fast frontend experience.
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+### Backend & Database
+- **API**: [tRPC](https://trpc.io/) (End-to-end typesafe API)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Database**: PostgreSQL / Supabase
+- **Authentication**: [NextAuth.js (Auth.js)](https://authjs.dev/)
+
+### Performance & Quality
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Standards**: ISO 9241-110, WCAG 2.1 AAA
+- **Persistence**: Optimized Image Component for zero layout shift
+
+---
+
+## 🚀 Projects Highlighted
+
+1.  **Pilot Handbook**: Full-stack aviation management platform.
+2.  **FHIR Interoperability Layer**: Secure FastAPI backend for medical data.
+3.  **Japanese Language Learning**: Bilingual educational platform.
+4.  **News Website**: Responsive platform with dynamic content loading.
+5.  **Idol Group Website**: Themed entertainment showcase.
+
+---
+
+## 🏗️ Architecture
+
+The portfolio follows the **T3 Stack** philosophy:
+- **Typesafe**: End-to-end typesafety from database to UI.
+- **Performant**: Minimal client-side JavaScript by leveraging Server Components.
+- **Scalable**: Ready for complex features like:
+    - Contact form persistence
+    - CMS-driven blog posts
+    - Admin dashboard for content management
+    - Real-time visitor analytics
+
+---
+
+## 💻 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- PostgreSQL database (or Supabase)
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/binsacedillo/portfolio-v2.git
+   cd portfolio-v2
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Check `.env.example` and create your own `.env` file.
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Initialize the database:
+   If you have Docker installed, you can quickly spin up a local PostgreSQL instance:
+   ```bash
+   chmod +x start-database.sh
+   ./start-database.sh
+   ```
+   Then push the schema:
+   ```bash
+   npm run db:push
+   ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📬 Contact & Socials
+
+- **Email**: [beansgioacedillo@gmail.com](mailto:beansgioacedillo@gmail.com)
+- **LinkedIn**: [Vince Gio Acedillo](https://www.linkedin.com/in/vince-gio-acedillo-449688318)
+- **GitHub**: [@binsacedillo](https://github.com/binsacedillo)
+- **Portfolio**: [portfolio-acedillo.vercel.app](https://portfolio-acedillo.vercel.app)
+
+---
+
+Developed with ❤️ by **Vince Gio N. Acedillo**
