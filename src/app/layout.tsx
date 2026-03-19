@@ -3,17 +3,15 @@ import "~/styles/globals.css";
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
-import { TRPCReactProvider } from "~/trpc/react";
-
 export const metadata: Metadata = {
   title: "Portfolio - Vince Gio",
-  description: "Full-stack portfolio showcasing Next.js, tRPC, Prisma, Tailwind, and Framer Motion.",
+  description: "Full-stack portfolio showcasing Next.js, Prisma, Tailwind, and Framer Motion.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
   metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
   openGraph: {
     title: "Portfolio - Vince Gio",
     description:
-      "Full-stack portfolio showcasing Next.js, tRPC, Prisma, Tailwind, and Framer Motion.",
+      "Full-stack portfolio showcasing Next.js, Prisma, Tailwind, and Framer Motion.",
     type: "website",
     locale: "en_US",
     url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
@@ -30,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Portfolio - Vince Gio",
     description:
-      "Full-stack portfolio showcasing Next.js, tRPC, Prisma, Tailwind, and Framer Motion.",
+      "Full-stack portfolio showcasing Next.js, Prisma, Tailwind, and Framer Motion.",
     images: ["/og-image.png"],
   },
   alternates: {
@@ -48,9 +46,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
