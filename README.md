@@ -3,10 +3,8 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Prisma](https://img.shields.io/badge/Prisma-6.6-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
-[![tRPC](https://img.shields.io/badge/tRPC-11-2596be?style=for-the-badge&logo=trpc)](https://trpc.io/)
 
-A premium, high-performance personal portfolio website built with the **T3 Stack**. This project showcases modern web development practices, focusing on performance, accessibility (ISO 9241 compliant), and smooth user experiences.
+A premium, high-performance personal portfolio website built with modern web development practices, focusing on performance, accessibility (ISO 9241 compliant), and smooth user experiences.
 
 ---
 
@@ -17,7 +15,7 @@ A premium, high-performance personal portfolio website built with the **T3 Stack
 - **📜 Scroll-Animated Timeline**: Interactive education and milestone tracking with smooth Framer Motion transitions.
 - **📂 Dynamic Projects Showcase**: Featured project highlights and responsive image-based cards for a diverse portfolio.
 - **⚡ High Performance**: Leveraging Next.js 15 App Router, Server Components, and optimized image processing.
-- **🛠️ Full-Stack Ready**: Integrated tRPC, Prisma, and NextAuth for seamless backend capabilities.
+- **🛠️ Backend Ready**: Integrated NextAuth for seamless backend capabilities.
 
 ---
 
@@ -30,8 +28,6 @@ A premium, high-performance personal portfolio website built with the **T3 Stack
 - **Icons**: [Lucide React](https://lucide.dev/)
 
 ### Backend & Database
-- **API**: [tRPC](https://trpc.io/) (End-to-end typesafe API)
-- **ORM**: [Prisma](https://www.prisma.io/)
 - **Database**: PostgreSQL / Supabase
 - **Authentication**: [NextAuth.js (Auth.js)](https://authjs.dev/)
 
@@ -54,7 +50,6 @@ A premium, high-performance personal portfolio website built with the **T3 Stack
 
 ## 🏗️ Architecture
 
-The portfolio follows the **T3 Stack** philosophy:
 - **Typesafe**: End-to-end typesafety from database to UI.
 - **Performant**: Minimal client-side JavaScript by leveraging Server Components.
 - **Scalable**: Ready for complex features like:
