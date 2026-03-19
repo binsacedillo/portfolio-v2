@@ -1,5 +1,5 @@
 import React from "react";
-import { Languages, Newspaper, Plane, Users, Activity } from "lucide-react";
+import { Languages, Newspaper, Plane, Users, Activity, Shield } from "lucide-react";
 
 export type Project = {
     title: string;
@@ -41,6 +41,27 @@ export const projects: Project[] = [
             "Supabase",
             "Full-Stack",
             "Aviation",
+        ],
+    },
+    {
+        title: "FEU Tamaraws | UAAP Season 88 Roster Experience",
+        description: "A premium athlete showcase prototype built for the FEU Tamaraws. This high-performance web interface features immersive 3D-perspective carousels, dynamic character watermarks, and high-fidelity entrance animations designed to meet ISO 9241 and WCAG 2.1 accessibility standards.",
+        icon: <Shield size={32} />,
+        category: "Interactive UI",
+        image: "/feuroster.jpg",
+        liveUrl: "https://feu-tamaraws-roster.vercel.app/",
+        repoUrl: "https://github.com/binsacedillo/feu-tamaraws-roster",
+        tags: [
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS v4",
+            "Framer Motion",
+            "React 19",
+            "UX/UI Design",
+            "Accessibility (WCAG)",
+            "Mobile Responsive",
+            "Sports Tech",
+            "Premium UI",
         ],
     },
     {
