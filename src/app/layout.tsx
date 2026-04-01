@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     google: "googleb3cc5490ff4f97f0",
   },
   icons: [{ rel: "icon", url: "/favicon.ico" }],
-  metadataBase: new URL("https://binsacedillo-portfolio.vercel.app"),
+  metadataBase: new URL("https://vinceacedilloportfolio.netlify.app"),
   openGraph: {
     title: "Vince Gio Acedillo - Portfolio",
     description:
       "Vince Gio Acedillo's professional portfolio showcasing full-stack applications, interactive UIs, and technical credentials.",
     type: "website",
     locale: "en_US",
-    url: "https://binsacedillo-portfolio.vercel.app",
+    url: "https://vinceacedilloportfolio.netlify.app",
     images: [
       {
         url: "/og-image.png",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   alternates: {
-    canonical: "https://binsacedillo-portfolio.vercel.app",
+    canonical: "https://vinceacedilloportfolio.netlify.app",
   },
 };
 
