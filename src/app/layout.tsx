@@ -4,17 +4,20 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Portfolio - Vince Gio",
-  description: "Full-stack portfolio showcasing Next.js, Prisma, Tailwind, and Framer Motion.",
+  title: "Vince Gio Acedillo | Full-Stack Developer Portfolio",
+  description: "Senior IT Student and Full-Stack Developer specializing in Next.js, TypeScript, and Python. Explore my projects and professional certifications.",
+  verification: {
+    google: "9FRXaJexWZ78wY7L6Jqu5Q1VcPlQxXmTxo2aGue3THk",
+  },
   icons: [{ rel: "icon", url: "/favicon.ico" }],
-  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
+  metadataBase: new URL("https://binsacedillo-portfolio.vercel.app"),
   openGraph: {
-    title: "Portfolio - Vince Gio",
+    title: "Vince Gio Acedillo - Portfolio",
     description:
-      "Full-stack portfolio showcasing Next.js, Prisma, Tailwind, and Framer Motion.",
+      "Vince Gio Acedillo's professional portfolio showcasing full-stack applications, interactive UIs, and technical credentials.",
     type: "website",
     locale: "en_US",
-    url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+    url: "https://binsacedillo-portfolio.vercel.app",
     images: [
       {
         url: "/og-image.png",
@@ -26,13 +29,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio - Vince Gio",
+    title: "Vince Gio Acedillo | Full-Stack Portfolio",
     description:
-      "Full-stack portfolio showcasing Next.js, Prisma, Tailwind, and Framer Motion.",
+      "A deep dive into my professional journey, full-stack projects, and verified credentials.",
     images: ["/og-image.png"],
   },
   alternates: {
-    canonical: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "/",
+    canonical: "https://binsacedillo-portfolio.vercel.app",
   },
 };
 
