@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Vince Gio Acedillo | Full-Stack Developer Portfolio",
   description: "Senior IT Student and Full-Stack Developer specializing in Next.js, TypeScript, and Python. Explore my projects and professional certifications.",
   verification: {
-    google: "9FRXaJexWZ78wY7L6Jqu5Q1VcPlQxXmTxo2aGue3THk",
+    google: "googleb3cc5490ff4f97f0",
   },
   icons: [{ rel: "icon", url: "/favicon.ico" }],
   metadataBase: new URL("https://binsacedillo-portfolio.vercel.app"),
