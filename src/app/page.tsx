@@ -1,6 +1,5 @@
 import Hero from "../components/landing/Hero";
 import Timeline from "../components/landing/Timeline";
-import Certifications from "../components/landing/Certifications";
 import ScrollShowcase from "../components/landing/ScrollShowcase";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
@@ -12,7 +11,6 @@ export default function Home() {
       <div id="timeline">
         <Timeline />
       </div>
-      <Certifications />
       <div id="projects">
         <ScrollShowcase />
       </div>

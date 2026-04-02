@@ -1,9 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowDown, Mail, GithubIcon, LinkedinIcon } from "lucide-react";
+import { ArrowDown, Mail, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import JapaneseMorphingTitle from "./JapaneseMorphingTitle";
+import CredentialBadges from "./CredentialBadges";
 
 const TECH_STACK = [
     {
@@ -22,15 +23,10 @@ const TECH_STACK = [
         )
     },
     {
-        name: "React",
+        name: "tRPC",
         icon: (
-            <svg viewBox="-10.5 -9.45 21 18.9" className="w-4 h-4 text-[#61DAFB] fill-current">
-                <circle cx="0" cy="0" r="2" fill="currentColor" />
-                <g stroke="currentColor" strokeWidth="1" fill="none">
-                    <ellipse rx="10" ry="4.5" />
-                    <ellipse rx="10" ry="4.5" transform="rotate(60)" />
-                    <ellipse rx="10" ry="4.5" transform="rotate(120)" />
-                </g>
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="#398ccb">
+                <path d="M1.328 17.514v-9.61h2.203v1.89h1.797v1.86h-1.797v5.86H1.328zm5.719 0v-6.328H8.86v1.078c.453-.875 1.25-1.328 2.39-1.328.25 0 .438.016.61.047v2.125c-.219-.047-.484-.078-.719-.078-1.281 0-2.078.687-2.281 2.015v2.469H7.047zm8.016 0v-9.61h4.64v3.125h-2.437v6.485h-2.203z" />
             </svg>
         )
     },
@@ -44,6 +40,14 @@ const TECH_STACK = [
         )
     },
     {
+        name: "Prisma",
+        icon: (
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="white">
+                <path d="M2.316 18.797l8.65-15.22a1.157 1.157 0 0 1 2.068 0l8.65 15.22a1.157 1.157 0 0 1-1.034 1.703H3.35a1.157 1.157 0 0 1-1.034-1.703z" />
+            </svg>
+        )
+    },
+    {
         name: "Python",
         icon: (
             <svg viewBox="0 0 256 256" className="w-4 h-4">
@@ -53,26 +57,18 @@ const TECH_STACK = [
         )
     },
     {
-        name: "FastAPI",
+        name: "Serwist (PWA)",
         icon: (
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="#009688">
-                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 2.18c5.42 0 9.82 4.4 9.82 9.82 0 5.42-4.4 9.82-9.82 9.82-5.42 0-9.82-4.4-9.82-9.82 0-5.42 4.4-9.82 9.82-9.82zM12 5.45c-3.6 0-6.55 2.95-6.55 6.55 0 3.6 2.95 6.55 6.55 6.55 3.6 0 6.55-2.95 6.55-6.55 0-3.6-2.95-6.55-6.55-6.55zm-1.09 2.18h2.18v3.27h3.27v2.18h-3.27v3.27h-2.18v-3.27H7.64v-2.18h3.27V7.63z" />
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="#FFC107">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />
             </svg>
         )
     },
     {
-        name: "Tailwind CSS",
-        icon: (
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="#06B6D4">
-                <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
-            </svg>
-        )
-    },
-    {
-        name: "Prisma",
+        name: "Framer Motion",
         icon: (
             <svg viewBox="0 0 24 24" className="w-4 h-4" fill="white">
-                <path d="M2.316 18.797l8.65-15.22a1.157 1.157 0 0 1 2.068 0l8.65 15.22a1.157 1.157 0 0 1-1.034 1.703H3.35a1.157 1.157 0 0 1-1.034-1.703z" />
+                <path d="M0 0l12 12L24 0H0zm0 12l12 12V12H0z" />
             </svg>
         )
     },
@@ -88,7 +84,7 @@ export default function Hero() {
 
     return (
         <section
-            className="relative min-h-screen w-full flex flex-col items-center justify-center bg-slate-950 px-6 py-20"
+            className="relative min-h-screen w-full flex flex-col items-center justify-around bg-slate-950 px-6 py-8"
             aria-label="Hero section"
         >
             {/* Background gradient effects */}
@@ -98,7 +94,7 @@ export default function Hero() {
             </div>
 
             {/* Main content */}
-            <div className="relative z-10 max-w-4xl w-full flex flex-col items-center text-center space-y-8">
+            <div className="relative z-10 max-w-4xl w-full flex flex-col items-center text-center space-y-4">
 
                 {/* Professional Photo */}
                 <motion.div
@@ -107,7 +103,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, type: "spring" as const, stiffness: 200 }}
                     className="relative"
                 >
-                    <div className="relative w-40 h-40 md:w-48 md:h-48">
+                    <div className="relative w-28 h-28 md:w-36 md:h-36">
                         {/* Animated ring */}
                         <div className="absolute inset-0 rounded-full bg-linear-to-r from-sky-500 to-purple-500 opacity-75 blur-md animate-pulse" />
                         {/* Photo container */}
@@ -149,28 +145,31 @@ export default function Hero() {
                 <JapaneseMorphingTitle />
 
                 {/* Role/Title with high contrast (WCAG AAA compliant) */}
-                <motion.h2
-                    className="text-2xl md:text-3xl font-semibold text-white"
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex flex-col items-center space-y-2"
                 >
-                    Information Technology Student | Full-Stack Developer
-                </motion.h2>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-white">
+                        Full-Stack Developer | Sophomore IT Undergraduate
+                    </h2>
+                    <CredentialBadges />
+                </motion.div>
 
                 {/* Value proposition - clear and concise (ISO 9241-110) */}
                 <motion.p
-                    className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed"
+                    className="text-base md:text-xl text-slate-300 max-w-2xl leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                    Building modern, scalable web applications with clean code and exceptional user experiences. Specialized in full-stack development with React, Next.js, TypeScript, and Python.
+                    Building modern, high-performance web applications with a focus on <span className="text-sky-400 font-medium">Offline-First PWAs</span> and the <span className="text-sky-400 font-medium">T3 Stack</span>. Specialized in scalable full-stack architectures using React, Next.js, tRPC, and Python.
                 </motion.p>
 
                 {/* Key skills/badges */}
                 <motion.div
-                    className="flex flex-wrap gap-3 justify-center"
+                    className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 sm:gap-3 justify-center"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
@@ -178,17 +177,17 @@ export default function Hero() {
                     {TECH_STACK.map((tech) => (
                         <span
                             key={tech.name}
-                            className="flex items-center gap-2 bg-slate-800/70 border border-slate-700 text-slate-200 text-sm px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-colors cursor-default"
+                            className="flex items-center justify-center gap-2 bg-slate-800/70 border border-slate-700 text-slate-200 text-[10px] sm:text-sm px-2 sm:px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-colors cursor-default whitespace-nowrap"
                         >
                             {tech.icon}
-                            {tech.name}
+                            <span className="hidden xs:inline">{tech.name}</span>
                         </span>
                     ))}
                 </motion.div>
 
                 {/* Primary and Secondary CTAs (ISO 9241-143: User guidance) */}
                 <motion.div
-                    className="flex flex-col sm:flex-row gap-4 pt-4"
+                    className="flex flex-col sm:flex-row gap-4 pt-2"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
@@ -216,7 +215,7 @@ export default function Hero() {
 
                 {/* Social links with proper labels (Accessibility) */}
                 <motion.div
-                    className="flex gap-6 pt-6"
+                    className="flex gap-6 pt-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
@@ -228,7 +227,7 @@ export default function Hero() {
                         aria-label="Visit my GitHub profile"
                         className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
                     >
-                        <GithubIcon size={24} />
+                        <Github size={24} />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/vince-gio-acedillo-449688318"
@@ -237,7 +236,7 @@ export default function Hero() {
                         aria-label="Visit my LinkedIn profile"
                         className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
                     >
-                        <LinkedinIcon size={24} />
+                        <Linkedin size={24} />
                     </a>
                     <a
                         href="https://www.facebook.com/binsAced"
@@ -252,9 +251,9 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            {/* Scroll indicator - subtle visual guidance (ISO 9241-110) */}
+            {/* Scroll indicator - hidden on mobile if too crowded, or just positioned naturally */}
             <motion.div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                className="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1, repeat: Infinity, repeatType: "reverse" }}
