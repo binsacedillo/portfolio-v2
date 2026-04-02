@@ -94,7 +94,7 @@ export default function Certifications() {
             </div>
 
             {/* Info */}
-            <div className="space-y-2 mb-6 flex-grow">
+            <div className="space-y-2 mb-6 grow">
               <div className="flex items-center justify-center gap-2 text-sky-400 text-sm font-semibold uppercase tracking-widest">
                 <Award size={14} />
                 {cert.issuer}
