@@ -17,7 +17,7 @@ const BLUR_DATA_URL =
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJyBoZWlnaHQ9JzEwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48ZmlsdGVyIGlkPSdCMicgeD0nMCcgeT0nMCc+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0nNCcgLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9InVybCgjQjIpIiBvcGFjaXR5PScwLjInLz48L3N2Zz4=";
 
 export function ScrollShowcase() {
-    const featuredProject = projects.find(p => p.isFeatured);
+    const featuredProjects = projects.filter(p => p.isFeatured);
     const regularProjects = projects.filter(p => !p.isFeatured);
 
     // Detect prefers-reduced-motion
@@ -58,9 +58,10 @@ export function ScrollShowcase() {
                 Portfolio Projects
             </motion.h2>
 
-            {/* Featured Project */}
-            {featuredProject && (
+            {/* Featured Projects */}
+            {featuredProjects.map((featuredProject, index) => (
                 <motion.div
+                    key={featuredProject.title + index}
                     className="w-full max-w-6xl mb-12"
                     variants={featuredVariants}
                     initial="hidden"
@@ -186,7 +187,7 @@ export function ScrollShowcase() {
                         </div>
                     </div>
                 </motion.div>
-            )}
+            ))}
 
             {/* Section Divider */}
             <motion.div

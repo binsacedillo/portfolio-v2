@@ -1,5 +1,5 @@
 import React from "react";
-import { Languages, Newspaper, Plane, Users, Activity, Shield } from "lucide-react";
+import { Languages, Newspaper, Plane, Users, Activity, Shield, Church } from "lucide-react";
 
 export type Project = {
     title: string;
@@ -16,6 +16,33 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+    {
+        title: "Faith Feed | Visita Iglesia 2026",
+        description: "A high-fidelity, meditative PWA designed for the Holy Week 2026 pilgrimage. This distraction-free digital companion features immersive liturgical content, date-aware Scripture cards for the Triduum, and offline-first accessibility for seamless devotions in busy cathedrals.",
+        valueProposition: "Streamlining the traditional 7-Church pilgrimage with immersive digital liturgy and offline-first mobile excellence.",
+        icon: <Church size={48} />,
+        category: "Full-Stack / PWA",
+        isFeatured: true,
+        image: "/faithfeed.jpg",
+        metrics: [
+            { label: "Performance", value: "99/100" },
+            { label: "Architecture", value: "T3 Stack" },
+        ],
+        liveUrl: "https://faithfeed.vercel.app/",
+        repoUrl: "https://github.com/binsacedillo/faithfeed-visita-iglesia",
+        tags: [
+            "Next.js 15",
+            "TypeScript",
+            "tRPC",
+            "Prisma",
+            "SQLite",
+            "Serwist (PWA)",
+            "Glassmorphism",
+            "Offline First",
+            "Full-Stack",
+            "Liturgical Tech",
+        ],
+    },
     {
         title: "Pilot Handbook - Aviation Management Platform",
         description: "A pilot logbook management application using Next.js with TypeScript, tRPC for API communication, Prisma with PostgreSQL for data persistence, Clerk authentication, and Tailwind CSS for responsive styling across all devices.",
