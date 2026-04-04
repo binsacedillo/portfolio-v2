@@ -113,17 +113,19 @@ export const projects: Project[] = [
     },
     {
         title: "Japanese Language Learning Platform",
-        description: "A high-performance educational platform built with React 19 and Tailwind CSS v4. Features a custom-built i18n engine for English/Japanese switching, modular page architecture, and a dynamic resource/community ecosystem.",
-        status: "Ongoing Revision Overhaul",
+        description:
+            "A modern educational web platform built with React 19, TypeScript, and Vite. It includes a custom context-based i18n system (English/Japanese), modular page architecture, animated UI interactions with Framer Motion, and a structured resources/community experience.",
+        status: "Active Development",
         icon: <Languages size={32} />,
         category: "Frontend",
         tags: [
             "React 19",
             "TypeScript",
-            "Tailwind CSS v4",
             "Vite",
             "React Router v7",
-            "i18n",
+            "Custom i18n (Context API)",
+            "Framer Motion",
+            "Tailwind CSS v4",
             "Responsive Design",
             "Education Tech",
         ],
