@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">
       <Hero />
-      <div id="timeline">
+      <div id="timeline" className="relative">
         <Timeline />
       </div>
-      <div id="projects">
+      <div id="projects" className="relative">
         <ScrollShowcase />
       </div>
       <Footer />

@@ -137,6 +137,7 @@ export default function Timeline() {
                         width={22}
                         height={22}
                         className="object-contain opacity-85"
+                        style={{ width: "auto", height: "auto" }}
                         onError={(e) => {
                           (e.target as HTMLImageElement).style.display = "none";
                         }}
