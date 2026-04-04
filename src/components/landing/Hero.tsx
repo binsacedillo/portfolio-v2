@@ -87,15 +87,28 @@ export default function Hero() {
             className="relative min-h-screen w-full flex flex-col items-center justify-around bg-slate-950 px-6 py-8"
             aria-label="Hero section"
         >
-            {/* Background gradient effects */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+            {/* Blurred Background Image */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+                <Image
+                    src="/faithfeed.jpg"
+                    alt=""
+                    fill
+                    className="object-cover opacity-15 blur-2xl scale-110"
+                    priority
+                />
+                {/* Dark overlay for text clarity */}
+                <div className="absolute inset-0 bg-slate-950/40" />
+                <div className="absolute inset-0 bg-linear-to-b from-slate-950/20 via-transparent to-slate-950" />
+            </div>
+
+            {/* Background gradient effects (Blobs) */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
             </div>
 
             {/* Main content */}
-            <div className="relative z-10 max-w-4xl w-full flex flex-col items-center text-center space-y-4">
-
+            <div className="relative z-10 max-w-4xl w-full flex flex-col items-center text-center space-y-4 backdrop-blur-[2px] py-10 rounded-3xl">
                 {/* Professional Photo */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -138,7 +151,7 @@ export default function Hero() {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
                     </span>
-                    <span className="text-sm text-sky-400 font-medium">Available for opportunities</span>
+                    <span className="text-sm text-sky-400 font-bold tracking-wide">Available for opportunities</span>
                 </motion.div>
 
                 {/* Name title with morphing animation */}
@@ -151,7 +164,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="flex flex-col items-center space-y-2"
                 >
-                    <h2 className="text-2xl md:text-3xl font-semibold text-white">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
                         Full-Stack Developer | Sophomore IT Undergraduate
                     </h2>
                     <CredentialBadges />
@@ -159,12 +172,12 @@ export default function Hero() {
 
                 {/* Value proposition - clear and concise (ISO 9241-110) */}
                 <motion.p
-                    className="text-base md:text-xl text-slate-300 max-w-2xl leading-relaxed"
+                    className="text-base md:text-xl text-white font-medium max-w-2xl leading-relaxed drop-shadow-md"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                    Building modern, high-performance web applications with a focus on <span className="text-sky-400 font-medium">Offline-First PWAs</span> and the <span className="text-sky-400 font-medium">T3 Stack</span>. Specialized in scalable full-stack architectures using React, Next.js, tRPC, and Python.
+                    Building modern, high-performance web applications with a focus on <span className="text-sky-400 font-bold">Offline-First PWAs</span> and the <span className="text-sky-400 font-bold">T3 Stack</span>. Specialized in scalable full-stack architectures using React, Next.js, tRPC, and Python.
                 </motion.p>
 
                 {/* Key skills/badges */}
@@ -177,7 +190,7 @@ export default function Hero() {
                     {TECH_STACK.map((tech) => (
                         <span
                             key={tech.name}
-                            className="flex items-center justify-center gap-2 bg-slate-800/70 border border-slate-700 text-slate-200 text-[10px] sm:text-sm px-2 sm:px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-colors cursor-default whitespace-nowrap"
+                            className="flex items-center justify-center gap-2 bg-slate-900/60 backdrop-blur-sm border border-slate-700 text-white text-[10px] sm:text-sm px-2 sm:px-4 py-2 rounded-lg font-bold hover:bg-slate-800 transition-colors cursor-default whitespace-nowrap shadow-lg"
                         >
                             {tech.icon}
                             <span className="hidden xs:inline">{tech.name}</span>
@@ -195,7 +208,7 @@ export default function Hero() {
                     {/* Primary CTA - High contrast */}
                     <button
                         onClick={scrollToProjects}
-                        className="group inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-sky-500/50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-sky-500/50 cursor-pointer"
+                        className="group inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-bold px-8 py-4 rounded-lg transition-all shadow-xl hover:shadow-sky-500/50 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-sky-500/50 cursor-pointer"
                         aria-label="View my projects"
                     >
                         View My Work
@@ -205,7 +218,7 @@ export default function Hero() {
                     {/* Secondary CTA */}
                     <a
                         href="mailto:beansgioacedillo@gmail.com"
-                        className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold px-8 py-4 rounded-lg transition-all border border-slate-700 hover:border-slate-600 focus:outline-none focus:ring-4 focus:ring-slate-600/50"
+                        className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-lg transition-all border border-slate-700 hover:border-slate-600 focus:outline-none focus:ring-4 focus:ring-slate-600/50 shadow-lg"
                         aria-label="Contact me via email"
                     >
                         <Mail size={18} />
@@ -225,7 +238,7 @@ export default function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Visit my GitHub profile"
-                        className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
+                        className="text-white bg-slate-900/50 hover:text-sky-400 transition-colors p-3 hover:bg-slate-800 rounded-xl shadow-lg border border-slate-800/50 focus:outline-none focus:ring-2 focus:ring-slate-600"
                     >
                         <Github size={24} />
                     </a>
@@ -234,7 +247,7 @@ export default function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Visit my LinkedIn profile"
-                        className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
+                        className="text-white bg-slate-900/50 hover:text-sky-400 transition-colors p-3 hover:bg-slate-800 rounded-xl shadow-lg border border-slate-800/50 focus:outline-none focus:ring-2 focus:ring-slate-600"
                     >
                         <Linkedin size={24} />
                     </a>
@@ -243,7 +256,7 @@ export default function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Visit my Facebook profile"
-                        className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600"
+                        className="text-white bg-slate-900/50 hover:text-sky-400 transition-colors p-3 hover:bg-slate-800 rounded-xl shadow-lg border border-slate-800/50 focus:outline-none focus:ring-2 focus:ring-slate-600"
                     >
                         {/* Facebook icon */}
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 5.019 3.676 9.167 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.876h2.773l-.443 2.89h-2.33v6.987C18.324 21.167 22 17.019 22 12z"/></svg>
@@ -259,7 +272,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 1, repeat: Infinity, repeatType: "reverse" }}
                 aria-hidden="true"
             >
-                <ArrowDown className="text-slate-500" size={28} />
+                <ArrowDown className="text-sky-400" size={28} />
             </motion.div>
         </section>
     );
