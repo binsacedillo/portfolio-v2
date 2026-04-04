@@ -1,6 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
-import { ExternalLink, Github, Star } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import React, { useMemo } from "react";
 import { projects } from "~/data/projects";
@@ -17,13 +17,33 @@ const BLUR_DATA_URL =
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJyBoZWlnaHQ9JzEwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48ZmlsdGVyIGlkPSdCMicgeD0nMCcgeT0nMCc+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0nNCcgLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9InVybCgjQjIpIiBvcGFjaXR5PScwLjInLz48L3N2Zz4=";
 
 export function ScrollShowcase() {
-    const featuredProjects = projects.filter(p => p.isFeatured);
-    const regularProjects = projects.filter(p => !p.isFeatured);
+    const prefersReducedMotion = useReducedMotion();
 
-    // Detect prefers-reduced-motion
-    const prefersReducedMotion = useMemo(() => {
-        if (typeof window === 'undefined') return false;
-        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const { featuredProjects, manifestGroups } = useMemo(() => {
+        const featured = projects.filter((p) => p.isFeatured);
+        const regular = projects.filter((p) => !p.isFeatured);
+
+        const classAProjects = regular.filter((p) => (p.category?.toLowerCase() ?? "").includes("full-stack"));
+        const classBProjects = regular.filter((p) => {
+            const category = p.category?.toLowerCase() ?? "";
+            return category.includes("frontend") || category.includes("ui");
+        });
+        const classCProjects = regular.filter((p) => {
+            const category = p.category?.toLowerCase() ?? "";
+            const hasFhirTag = p.tags?.some((tag) => tag.toLowerCase().includes("fhir")) ?? false;
+            return category.includes("backend") || hasFhirTag;
+        });
+
+        const groups = [
+            { title: "Class A - Full-Stack / T3", items: classAProjects },
+            { title: "Class B - UI / Frontend", items: classBProjects },
+            { title: "Class C - Backend / FHIR", items: classCProjects },
+        ].filter((group) => group.items.length > 0);
+
+        return {
+            featuredProjects: featured,
+            manifestGroups: groups,
+        };
     }, []);
 
     const sectionVariants = prefersReducedMotion ? sectionFadeInReduced : sectionFadeIn;
@@ -69,9 +89,13 @@ export function ScrollShowcase() {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                     <div className="relative backdrop-blur-sm border-2 border-sky-500/30 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 focus-within:ring-2 focus-within:ring-sky-400/50 hover:border-sky-500/60" style={{ background: 'var(--gradient-card-bg)', boxShadow: 'var(--shadow-featured-hover)' }}>
-                        {/* Star Badge */}
-                        <div className="absolute top-4 right-4 z-10 bg-amber-500/20 border border-amber-500/50 rounded-full p-2">
-                            <Star className="text-amber-400 fill-amber-400" size={20} />
+                        <div className="absolute top-4 left-4 z-10 rounded-md border border-sky-500/45 bg-slate-900/75 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-sky-300">
+                            Mission Manifest
+                        </div>
+
+                        <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-500/50 bg-emerald-500/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300">
+                            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                            Status: Operational
                         </div>
 
                         <div className="flex flex-col lg:flex-row gap-0 items-stretch">
@@ -87,7 +111,8 @@ export function ScrollShowcase() {
                                         alt={featuredProject.title}
                                         fill
                                         className="object-cover"
-                                        priority
+                                        priority={index === 0}
+                                        loading={index === 0 ? "eager" : "lazy"}
                                         sizes="(min-width: 1024px) 40vw, 100vw"
                                         placeholder="blur"
                                         blurDataURL={BLUR_DATA_URL}
@@ -103,10 +128,26 @@ export function ScrollShowcase() {
                                 )}
                                 {/* Image Overlay Gradient */}
                                 <div className="absolute inset-0 bg-linear-to-r from-slate-900/30 to-transparent" />
+                                <div
+                                    className="absolute inset-0 opacity-20"
+                                    style={{
+                                        backgroundImage: "linear-gradient(to bottom, rgba(148,163,184,0.22) 1px, transparent 1px)",
+                                        backgroundSize: "100% 4px",
+                                    }}
+                                    aria-hidden="true"
+                                />
+                                <div
+                                    className="absolute inset-0 opacity-12"
+                                    style={{
+                                        backgroundImage: "linear-gradient(rgba(125,211,252,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,0.2) 1px, transparent 1px)",
+                                        backgroundSize: "20px 20px",
+                                    }}
+                                    aria-hidden="true"
+                                />
                             </motion.div>
 
                             {/* Content - Right Side */}
-                            <div className="flex-1 p-6 lg:p-7 flex flex-col justify-between">
+                            <div className="flex-1 p-6 lg:p-7 lg:pt-12 lg:pr-44 flex flex-col justify-between">
                                 <div>
                                     <div className="flex flex-wrap items-center gap-3 mb-1">
                                         <h3 className="text-xl lg:text-2xl font-bold text-white">
@@ -119,6 +160,7 @@ export function ScrollShowcase() {
                                         )}
                                     </div>
                                     <p className="text-sky-400 text-sm lg:text-base font-medium mb-2">
+                                        <span className="font-mono text-xs uppercase tracking-[0.14em] text-amber-300">Objective:</span>{" "}
                                         {featuredProject.valueProposition}
                                     </p>
                                     <p className="text-slate-300 text-sm lg:text-base leading-relaxed mb-3">
@@ -219,8 +261,12 @@ export function ScrollShowcase() {
                     <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 text-center">Other Projects</h3>
                     <p className="text-slate-400 text-center mb-10">Explore more of my work across different technologies and domains</p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                        {regularProjects.map((project, idx) => (
+                    <div className="space-y-10 w-full">
+                        {manifestGroups.map((group, groupIndex) => (
+                            <div key={group.title}>
+                                <h4 className="mb-4 font-mono text-sm uppercase tracking-[0.18em] text-sky-300">{group.title}</h4>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                                    {group.items.map((project, idx) => (
                             <motion.div
                                 key={project.title + idx}
                                 className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-all duration-300 flex flex-col h-full hover:shadow-2xl hover:shadow-sky-500/10 hover:scale-105 focus-within:ring-2 focus-within:ring-sky-400/50"
@@ -228,7 +274,7 @@ export function ScrollShowcase() {
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true, amount: 0.2 }}
-                                custom={idx}
+                                custom={idx + groupIndex * 2}
                             >
                                 {/* Project Image */}
                                 <div className="relative aspect-video w-full bg-slate-800 overflow-hidden shrink-0">
@@ -283,9 +329,9 @@ export function ScrollShowcase() {
                                             {project.tags.map((tag, idx) => (
                                                 <span
                                                     key={idx}
-                                                    className="bg-slate-800 text-slate-200 text-xs px-2 py-1 rounded-md border border-slate-700 transition-colors duration-200"
+                                                    className="font-mono text-[11px] uppercase tracking-widest text-slate-200 px-2 py-1 rounded-sm border border-slate-600 transition-colors duration-200"
                                                 >
-                                                    {tag}
+                                                    [ {tag} ]
                                                 </span>
                                             ))}
                                         </div>
@@ -324,6 +370,9 @@ export function ScrollShowcase() {
                                     </div>
                                 </div>
                             </motion.div>
+                                    ))}
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </div>
