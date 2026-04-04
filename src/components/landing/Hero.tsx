@@ -138,7 +138,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen overflow-hidden bg-slate-950 px-5 py-8 text-white md:px-10"
+      className="relative min-h-screen overflow-hidden bg-slate-950 px-3 py-6 text-white sm:px-5 sm:py-8 md:px-10"
       aria-label="Hero section"
       onMouseMove={onMouseMove}
       style={{ cursor: cursorLocked ? CURSOR_LOCK : CURSOR_NORMAL }}
@@ -174,12 +174,12 @@ export default function Hero() {
         <div className="absolute inset-0 bg-slate-950/70" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl items-center justify-center">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-3rem)] max-w-6xl items-center justify-center pb-4 sm:min-h-[calc(100vh-4rem)]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
-          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 p-5 shadow-2xl shadow-cyan-950/20 backdrop-blur-2xl sm:p-8 md:p-10"
+          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 p-4 shadow-2xl shadow-cyan-950/20 backdrop-blur-2xl sm:p-6 md:p-10"
         >
           <div className="pointer-events-none absolute inset-0 rounded-3xl border border-sky-200/20" aria-hidden="true" />
           <div
@@ -197,7 +197,7 @@ export default function Hero() {
 
           <div className="relative overflow-hidden border-b border-white/10 pb-3">
             <motion.div
-              className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-slate-300"
+              className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.12em] text-slate-300 sm:text-[11px] sm:tracking-[0.18em]"
               animate={shouldReduceMotion ? undefined : { x: ["0%", "-50%"] }}
               transition={
                 shouldReduceMotion
@@ -250,6 +250,7 @@ export default function Hero() {
                     src="/profile-photo.jpg"
                     alt=""
                     fill
+                    sizes="96px"
                     className="object-cover object-top"
                     priority
                     onError={() => setImageError(true)}
@@ -324,7 +325,7 @@ export default function Hero() {
             >
               <button
                 onClick={scrollToProjects}
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-amber-300/45 bg-amber-500 px-8 py-4 font-mono text-sm font-bold uppercase tracking-[0.08em] text-black shadow-xl shadow-amber-500/30 transition-all hover:scale-[1.02] hover:bg-amber-400 focus:outline-none focus:ring-4 focus:ring-amber-300/60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-amber-300/45 bg-amber-500 px-6 py-3.5 font-mono text-sm font-bold uppercase tracking-[0.08em] text-black shadow-xl shadow-amber-500/30 transition-all hover:scale-[1.02] hover:bg-amber-400 focus:outline-none focus:ring-4 focus:ring-amber-300/60 sm:w-auto sm:px-8 sm:py-4"
                 aria-label="View my projects"
                 {...interactiveProps}
               >
@@ -334,7 +335,7 @@ export default function Hero() {
 
               <a
                 href="mailto:beansgioacedillo@gmail.com"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/85 px-8 py-4 font-bold text-white shadow-lg transition-all hover:border-slate-600 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-600/50"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/85 px-6 py-3.5 font-bold text-white shadow-lg transition-all hover:border-slate-600 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-600/50 sm:w-auto sm:px-8 sm:py-4"
                 aria-label="Contact me via email"
                 {...interactiveProps}
               >
@@ -344,7 +345,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.div
-              className="mt-8 flex gap-4"
+              className="mt-8 flex flex-wrap justify-center gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.55, delay: 0.45 }}
@@ -385,19 +386,19 @@ export default function Hero() {
                 </svg>
               </a>
             </motion.div>
+
+            <nav className="mt-8 w-full max-w-3xl" aria-label="Flight path navigation">
+              <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-2xl border border-white/15 bg-slate-900/65 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-200 backdrop-blur-md sm:text-xs sm:tracking-[0.2em]">
+                <span>Dep: MNL (About)</span>
+                <span className="text-sky-300">-&gt;</span>
+                <span>Enr: Tech (Stack)</span>
+                <span className="text-sky-300">-&gt;</span>
+                <span>Arr: KSFO (Contact)</span>
+              </div>
+            </nav>
           </div>
         </motion.div>
       </div>
-
-      <nav className="absolute bottom-5 left-1/2 z-20 -translate-x-1/2">
-        <div className="rounded-full border border-white/15 bg-slate-900/65 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-200 backdrop-blur-md sm:text-xs">
-          <span>Dep: MNL (About)</span>
-          <span className="mx-2 text-sky-300">-&gt;</span>
-          <span>Enr: Tech (Stack)</span>
-          <span className="mx-2 text-sky-300">-&gt;</span>
-          <span>Arr: KSFO (Contact)</span>
-        </div>
-      </nav>
 
       {cursorLocked && (
         <div
