@@ -115,7 +115,6 @@ export const projects: Project[] = [
         title: "Japanese Language Learning Platform",
         description:
             "A modern educational web platform built with React 19, TypeScript, and Vite. It includes a custom context-based i18n system (English/Japanese), modular page architecture, animated UI interactions with Framer Motion, and a structured resources/community experience.",
-        status: "Active Development",
         icon: <Languages size={32} />,
         category: "Frontend",
         tags: [
