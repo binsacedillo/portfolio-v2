@@ -13,6 +13,7 @@ export type Project = {
     repoUrl?: string;
     tags?: string[];
     image?: string;
+    status?: string;
 };
 
 export const projects: Project[] = [
@@ -111,11 +112,21 @@ export const projects: Project[] = [
         liveUrl: "https://fhir-project-zeta.vercel.app",
     },
     {
-        title: "Japanese Language Learning Website",
-        description: "A responsive Japanese Language Learning website with bilingual navigation, translation features, and React Router for seamless page transitions.",
+        title: "Japanese Language Learning Platform",
+        description: "A high-performance educational platform built with React 19 and Tailwind CSS v4. Features a custom-built i18n engine for English/Japanese switching, modular page architecture, and a dynamic resource/community ecosystem.",
+        status: "Ongoing Revision Overhaul",
         icon: <Languages size={32} />,
         category: "Frontend",
-        tags: ["React", "React Router", "i18n", "Responsive", "Education", "Language Learning", "Frontend"],
+        tags: [
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS v4",
+            "Vite",
+            "React Router v7",
+            "i18n",
+            "Responsive Design",
+            "Education Tech",
+        ],
         image: "/japaneselangwebsite.jpg",
         repoUrl: "https://github.com/binsacedillo/JapLanguageLearningWebsite",
     },

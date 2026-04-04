@@ -108,9 +108,16 @@ export function ScrollShowcase() {
                             {/* Content - Right Side */}
                             <div className="flex-1 p-6 lg:p-7 flex flex-col justify-between">
                                 <div>
-                                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-1">
-                                        {featuredProject.title}
-                                    </h3>
+                                    <div className="flex flex-wrap items-center gap-3 mb-1">
+                                        <h3 className="text-xl lg:text-2xl font-bold text-white">
+                                            {featuredProject.title}
+                                        </h3>
+                                        {featuredProject.status && (
+                                            <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] lg:text-xs uppercase tracking-tighter px-2 py-0.5 rounded-md font-bold animate-pulse">
+                                                {featuredProject.status}
+                                            </span>
+                                        )}
+                                    </div>
                                     <p className="text-sky-400 text-sm lg:text-base font-medium mb-2">
                                         {featuredProject.valueProposition}
                                     </p>
@@ -250,14 +257,19 @@ export function ScrollShowcase() {
 
                                 {/* Card Content */}
                                 <div className="p-6 flex flex-col grow">
-                                    {/* Category Badge */}
-                                    {project.category && (
-                                        <div className="mb-3">
+                                    {/* Category & Status Badges */}
+                                    <div className="mb-3 flex flex-wrap gap-2">
+                                        {project.category && (
                                             <span className="inline-block bg-sky-500/20 border border-sky-500/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
                                                 {project.category}
                                             </span>
-                                        </div>
-                                    )}
+                                        )}
+                                        {project.status && (
+                                            <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-tight animate-pulse">
+                                                {project.status}
+                                            </span>
+                                        )}
+                                    </div>
 
                                     <div className="flex items-center gap-3 mb-3">
                                         <div className="text-sky-400 shrink-0" aria-hidden="true">{project.icon}</div>
