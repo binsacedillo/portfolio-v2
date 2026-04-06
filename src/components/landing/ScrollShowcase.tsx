@@ -11,6 +11,8 @@ import {
     featuredCardVariantsReduced,
     sectionFadeIn,
     sectionFadeInReduced,
+    containerVariants,
+    itemVariants,
 } from "~/lib/motion";
 
 const BLUR_DATA_URL =
@@ -51,11 +53,8 @@ export function ScrollShowcase() {
     const cardVariants = prefersReducedMotion ? cardStaggerVariantsReduced : cardStaggerVariants;
 
     return (
-        <motion.section
+        <section
             className="min-h-screen flex flex-col items-center justify-center bg-slate-950 px-4 py-16"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
             aria-label="Portfolio projects section"
             style={{ colorScheme: 'dark' }}
         >
@@ -242,136 +241,132 @@ export function ScrollShowcase() {
 
 
             {/* Regular Projects Grid */}
-            <motion.div
-                className="w-full mt-20"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.6 }}
-            >
+            <div className="w-full mt-20">
                 <div className="max-w-5xl mx-auto">
                     <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 text-center">Other Projects</h3>
                     <p className="text-slate-400 text-center mb-10">Explore more of my work across different technologies and domains</p>
 
                     <div className="space-y-10 w-full">
-                        {manifestGroups.map((group, groupIndex) => (
+                        {manifestGroups.map((group) => (
                             <div key={group.title}>
                                 <h4 className="mb-4 font-mono text-sm uppercase tracking-[0.18em] text-sky-300">{group.title}</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                                    {group.items.map((project, idx) => (
-                            <motion.div
-                                key={project.title + idx}
-                                className="bg-slate-900/80 border border-slate-800 transform-gpu rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-all duration-300 flex flex-col h-full hover:shadow-2xl hover:shadow-sky-500/10 focus-within:ring-2 focus-within:ring-sky-400/50"
-                                style={{ willChange: 'transform, opacity' }}
-                                variants={cardVariants}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.1 }}
-                                whileHover={{ scale: 1.02 }}
-                                custom={idx + groupIndex * 2}
-                            >
-                                {/* Project Image */}
-                                <div className="relative aspect-video w-full bg-slate-800 overflow-hidden shrink-0">
-                                    {project.image ? (
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover"
-                                            loading="lazy"
-                                            sizes="(min-width: 1024px) 50vw, (min-width: 640px) 100vw, 100vw"
-                                            placeholder="blur"
-                                            blurDataURL={BLUR_DATA_URL}
-                                            onError={(e) => {
-                                                // Hide image container on error
-                                                const target = e.target as HTMLImageElement;
-                                                target.style.display = 'none';
-                                            }}
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-sky-400">
-                                            {project.icon}
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Card Content */}
-                                <div className="p-6 flex flex-col grow">
-                                    {/* Category & Status Badges */}
-                                    <div className="mb-3 flex flex-wrap gap-2">
-                                        {project.category && (
-                                            <span className="inline-block bg-sky-500/20 border border-sky-500/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-                                                {project.category}
-                                            </span>
-                                        )}
-                                        {project.status && (
-                                            <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-tight">
-                                                {project.status}
-                                            </span>
-                                        )}
-                                    </div>
-
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="text-sky-400 shrink-0" aria-hidden="true">{project.icon}</div>
-                                        <h4 className="text-lg font-semibold text-white">{project.title}</h4>
-                                    </div>
-                                    <p className="text-slate-300 text-sm mb-4 line-clamp-3 grow">{project.description}</p>
-
-                                    {/* Tags */}
-                                    {project.tags && (
-                                        <div className="flex flex-wrap gap-2 mb-4">
-                                            {project.tags.map((tag, idx) => (
-                                                <span
-                                                    key={idx}
-                                                    className="font-mono text-[11px] uppercase tracking-widest text-slate-200 px-2 py-1 rounded-sm border border-slate-600 transition-colors duration-200"
-                                                >
-                                                    [ {tag} ]
-                                                </span>
-                                            ))}
-                                        </div>
-                                    )}
-
-                                    {/* Action Buttons */}
-                                    <div className="flex gap-3 mt-auto">
-                                        {project.liveUrl && (
-                                            <motion.a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex-1 inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400/70 focus:ring-offset-2 focus:ring-offset-slate-950 cursor-pointer"
-                                                aria-label={`Open ${project.title} live demo in new window`}
-                                                whileHover={{ scale: 1.03 }}
-                                                whileTap={{ scale: 0.97 }}
-                                            >
-                                                <ExternalLink size={16} aria-hidden="true" />
-                                                View
-                                            </motion.a>
-                                        )}
-                                        {project.repoUrl && (
-                                            <motion.a
-                                                href={project.repoUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-500 text-slate-50 font-semibold px-3 py-2 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400/70 focus:ring-offset-2 focus:ring-offset-slate-950 cursor-pointer"
-                                                aria-label={`View ${project.title} source code on GitHub in new window`}
-                                                whileHover={{ scale: 1.03 }}
-                                                whileTap={{ scale: 0.97 }}
-                                            >
-                                                <Github size={16} aria-hidden="true" />
-                                                Code
-                                            </motion.a>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
+                                <motion.div
+                                    variants={containerVariants}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true, amount: 0.1 }}
+                                    className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
+                                >
+                                    {group.items.map((project) => (
+                                        <motion.div
+                                            key={project.title}
+                                            className="bg-slate-900/80 border border-slate-800 transform-gpu rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-all duration-300 flex flex-col h-full hover:shadow-2xl hover:shadow-sky-500/10 focus-within:ring-2 focus-within:ring-sky-400/50"
+                                            style={{ willChange: 'transform, opacity' }}
+                                            variants={itemVariants}
+                                            whileHover={{ scale: 1.02 }}
+                                        >
+                                            {/* Project Image */}
+                                            <div className="relative aspect-video w-full bg-slate-800 overflow-hidden shrink-0">
+                                                {project.image ? (
+                                                    <Image
+                                                        src={project.image}
+                                                        alt={project.title}
+                                                        fill
+                                                        className="object-cover"
+                                                        loading="lazy"
+                                                        sizes="(min-width: 1024px) 50vw, (min-width: 640px) 100vw, 100vw"
+                                                        placeholder="blur"
+                                                        blurDataURL={BLUR_DATA_URL}
+                                                        onError={(e) => {
+                                                            // Hide image container on error
+                                                            const target = e.target as HTMLImageElement;
+                                                            target.style.display = 'none';
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <div className="w-full h-full flex items-center justify-center text-sky-400">
+                                                        {project.icon}
+                                                    </div>
+                                                )}
+                                            </div>
+ 
+                                            {/* Card Content */}
+                                            <div className="p-6 flex flex-col grow">
+                                                {/* Category & Status Badges */}
+                                                <div className="mb-3 flex flex-wrap gap-2">
+                                                    {project.category && (
+                                                        <span className="inline-block bg-sky-500/20 border border-sky-500/40 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                                                            {project.category}
+                                                        </span>
+                                                    )}
+                                                    {project.status && (
+                                                        <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-tight">
+                                                            {project.status}
+                                                        </span>
+                                                    )}
+                                                </div>
+ 
+                                                <div className="flex items-center gap-3 mb-3">
+                                                    <div className="text-sky-400 shrink-0" aria-hidden="true">{project.icon}</div>
+                                                    <h4 className="text-lg font-semibold text-white">{project.title}</h4>
+                                                </div>
+                                                <p className="text-slate-300 text-sm mb-4 line-clamp-3 grow">{project.description}</p>
+ 
+                                                {/* Tags */}
+                                                {project.tags && (
+                                                    <div className="flex flex-wrap gap-2 mb-4">
+                                                        {project.tags.map((tag, idx) => (
+                                                            <span
+                                                                key={idx}
+                                                                className="font-mono text-[11px] uppercase tracking-widest text-slate-200 px-2 py-1 rounded-sm border border-slate-600 transition-colors duration-200"
+                                                            >
+                                                                [ {tag} ]
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+ 
+                                                {/* Action Buttons */}
+                                                <div className="flex gap-3 mt-auto">
+                                                    {project.liveUrl && (
+                                                        <motion.a
+                                                            href={project.liveUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex-1 inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white font-semibold px-3 py-2 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400/70 focus:ring-offset-2 focus:ring-offset-slate-950 cursor-pointer"
+                                                            aria-label={`Open ${project.title} live demo in new window`}
+                                                            whileHover={{ scale: 1.03 }}
+                                                            whileTap={{ scale: 0.97 }}
+                                                        >
+                                                            <ExternalLink size={16} aria-hidden="true" />
+                                                            View
+                                                        </motion.a>
+                                                    )}
+                                                    {project.repoUrl && (
+                                                        <motion.a
+                                                            href={project.repoUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-500 text-slate-50 font-semibold px-3 py-2 rounded-lg transition-colors duration-200 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400/70 focus:ring-offset-2 focus:ring-offset-slate-950 cursor-pointer"
+                                                            aria-label={`View ${project.title} source code on GitHub in new window`}
+                                                            whileHover={{ scale: 1.03 }}
+                                                            whileTap={{ scale: 0.97 }}
+                                                        >
+                                                            <Github size={16} aria-hidden="true" />
+                                                            Code
+                                                        </motion.a>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </motion.div>
                                     ))}
-                                </div>
+                                </motion.div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </motion.div>
-        </motion.section>
+            </div>
+        </section>
     );
 }
 
