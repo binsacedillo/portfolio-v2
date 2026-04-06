@@ -99,21 +99,30 @@ export default function Timeline() {
           <div className="pointer-events-none absolute left-31 top-0 h-full w-0.5 bg-linear-to-b from-sky-300/30 via-cyan-300/65 to-sky-300/30 transform-gpu" />
 
           <motion.div
-            className="pointer-events-none absolute left-28 top-0 text-sky-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)] transform-gpu"
-            style={{ top: planePath }}
-            aria-hidden="true"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="space-y-8"
           >
-            <PlaneMarker />
-          </motion.div>
-
-          <div className="space-y-8">
             {timeline.map((event) => (
               <motion.article
                 key={event.year + event.waypoint}
-                initial={{ opacity: 0, y: 30, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
+                variants={{
+                  hidden: { opacity: 0, y: 20, scale: 0.98 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.5, ease: "easeOut" },
+                  },
+                }}
                 className="grid grid-cols-[96px_24px_1fr] items-start gap-4 transform-gpu"
               >
                 <div className="pt-1 text-right">
@@ -150,7 +159,7 @@ export default function Timeline() {
                 </div>
               </motion.article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
