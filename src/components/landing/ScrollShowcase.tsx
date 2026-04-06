@@ -88,13 +88,13 @@ export function ScrollShowcase() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                 >
-                    <div className="relative backdrop-blur-sm border-2 border-sky-500/30 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 focus-within:ring-2 focus-within:ring-sky-400/50 hover:border-sky-500/60" style={{ background: 'var(--gradient-card-bg)', boxShadow: 'var(--shadow-featured-hover)' }}>
+                    <div className="relative border-2 border-sky-500/30 rounded-2xl overflow-hidden shadow-2xl transform-gpu transition-all duration-300 focus-within:ring-2 focus-within:ring-sky-400/50 hover:border-sky-500/60" style={{ background: 'var(--gradient-card-bg)', boxShadow: 'var(--shadow-featured-hover)' }}>
                         <div className="absolute top-4 left-4 z-10 rounded-md border border-sky-500/45 bg-slate-900/75 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-sky-300">
                             Mission Manifest
                         </div>
 
-                        <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-500/50 bg-emerald-500/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300">
-                            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300 shadow-lg">
+                            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 opacity-80" />
                             Status: Operational
                         </div>
 
@@ -129,18 +129,10 @@ export function ScrollShowcase() {
                                 {/* Image Overlay Gradient */}
                                 <div className="absolute inset-0 bg-linear-to-r from-slate-900/30 to-transparent" />
                                 <div
-                                    className="absolute inset-0 opacity-20"
+                                    className="absolute inset-0 opacity-12 transform-gpu"
                                     style={{
-                                        backgroundImage: "linear-gradient(to bottom, rgba(148,163,184,0.22) 1px, transparent 1px)",
-                                        backgroundSize: "100% 4px",
-                                    }}
-                                    aria-hidden="true"
-                                />
-                                <div
-                                    className="absolute inset-0 opacity-12"
-                                    style={{
-                                        backgroundImage: "linear-gradient(rgba(125,211,252,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,0.2) 1px, transparent 1px)",
-                                        backgroundSize: "20px 20px",
+                                        backgroundImage: "linear-gradient(rgba(125,211,252,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,0.1) 1px, transparent 1px)",
+                                        backgroundSize: "24px 24px",
                                     }}
                                     aria-hidden="true"
                                 />
@@ -154,7 +146,7 @@ export function ScrollShowcase() {
                                             {featuredProject.title}
                                         </h3>
                                         {featuredProject.status && (
-                                            <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] lg:text-xs uppercase tracking-tighter px-2 py-0.5 rounded-md font-bold animate-pulse">
+                                            <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] lg:text-xs uppercase tracking-tighter px-2 py-0.5 rounded-md font-bold">
                                                 {featuredProject.status}
                                             </span>
                                         )}
@@ -269,7 +261,7 @@ export function ScrollShowcase() {
                                     {group.items.map((project, idx) => (
                             <motion.div
                                 key={project.title + idx}
-                                className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-all duration-300 flex flex-col h-full hover:shadow-2xl hover:shadow-sky-500/10 hover:scale-105 focus-within:ring-2 focus-within:ring-sky-400/50"
+                                className="bg-slate-900/80 border border-slate-800 transform-gpu rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-all duration-300 flex flex-col h-full hover:shadow-2xl hover:shadow-sky-500/10 hover:scale-[1.03] focus-within:ring-2 focus-within:ring-sky-400/50"
                                 variants={cardVariants}
                                 initial="hidden"
                                 whileInView="visible"
@@ -311,7 +303,7 @@ export function ScrollShowcase() {
                                             </span>
                                         )}
                                         {project.status && (
-                                            <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-tight animate-pulse">
+                                            <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-tight">
                                                 {project.status}
                                             </span>
                                         )}

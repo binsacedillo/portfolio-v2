@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Code, GraduationCap, Rocket } from "lucide-react";
 import Image from "next/image";
 import React, { useRef } from "react";
@@ -84,7 +84,9 @@ export default function Timeline() {
     offset: ["start 70%", "end 30%"],
   });
 
-  const planeOffset = useTransform(scrollYProgress, [0, 1], [10, 620]);
+  // Optimized spring-based movement for the plane marker (no React state updates)
+  const springProgress = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
+  const planeOffset = useTransform(springProgress, [0, 1], [10, 620]);
 
   return (
     <section className="w-full px-4 py-14">
@@ -94,10 +96,10 @@ export default function Timeline() {
         </div>
 
         <div ref={trackRef} className="relative mx-auto max-w-4xl">
-          <div className="pointer-events-none absolute left-29 top-0 h-full w-0.5 bg-linear-to-b from-sky-300/30 via-cyan-300/65 to-sky-300/30" />
+          <div className="pointer-events-none absolute left-29 top-0 h-full w-0.5 bg-linear-to-b from-sky-300/30 via-cyan-300/65 to-sky-300/30 transform-gpu" />
 
           <motion.div
-            className="pointer-events-none absolute left-26 top-0 text-sky-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]"
+            className="pointer-events-none absolute left-26 top-0 text-sky-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)] transform-gpu"
             style={{ y: planeOffset }}
             aria-hidden="true"
           >
@@ -110,9 +112,9 @@ export default function Timeline() {
                 key={event.year + event.waypoint}
                 initial={{ opacity: 0, y: 30, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.35 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.45, ease: "easeOut" }}
-                className="grid grid-cols-[96px_24px_1fr] items-start gap-4"
+                className="grid grid-cols-[96px_24px_1fr] items-start gap-4 transform-gpu"
               >
                 <div className="pt-1 text-right">
                   <p className="font-mono text-xs uppercase tracking-[0.18em] text-sky-300">{event.flightLevel}</p>
@@ -123,7 +125,7 @@ export default function Timeline() {
                   <WaypointTriangle />
                 </div>
 
-                <div className="rounded-2xl border border-slate-800 bg-slate-900/55 p-5 shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-sky-500/45 hover:shadow-sky-900/20">
+                <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 shadow-lg transition-all duration-300 hover:border-sky-500/45 hover:shadow-sky-900/20">
                   <div className="mb-2 flex flex-wrap items-center gap-2">
                     <span className="rounded-md border border-sky-500/45 bg-sky-500/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-sky-300">
                       [{event.waypoint}]

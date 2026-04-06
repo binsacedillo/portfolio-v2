@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -28,12 +28,25 @@ export default function Hero() {
   const [imageError, setImageError] = useState(false);
   const [localTime, setLocalTime] = useState("");
   const [tickerText, setTickerText] = useState(DEFAULT_TICKER);
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
-  const [horizonTilt, setHorizonTilt] = useState(0);
   const [cursorLocked, setCursorLocked] = useState(false);
   const shouldReduceMotion = useReducedMotion();
-  const frameRef = useRef<number | null>(null);
-  const pendingParallax = useRef({ x: 0, y: 0 });
+
+  // Optimized high-performance parallax using direct DOM updates (bypassing React state)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const tiltX = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 100 };
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
+  const springTilt = useSpring(tiltX, { damping: 20, stiffness: 80 });
+
+  // Pre-calculated transforms for different parallax depths
+  const blob1X = useTransform(springX, [-0.5, 0.5], [14, -14]);
+  const blob1Y = useTransform(springY, [-0.5, 0.5], [10, -10]);
+  const blob2X = useTransform(springX, [-0.5, 0.5], [-12.6, 12.6]);
+  const blob2Y = useTransform(springY, [-0.5, 0.5], [-9, 9]);
+  const tiltRotation = springTilt;
 
   const timeFormatter = useMemo(
     () =>
@@ -91,20 +104,12 @@ export default function Hero() {
     const onOrientation = (event: DeviceOrientationEvent) => {
       const gamma = event.gamma ?? 0;
       const clamped = Math.max(-12, Math.min(12, gamma));
-      setHorizonTilt(clamped * 0.35);
+      tiltX.set(clamped * 0.35);
     };
 
     window.addEventListener("deviceorientation", onOrientation, true);
     return () => window.removeEventListener("deviceorientation", onOrientation, true);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (frameRef.current !== null) {
-        cancelAnimationFrame(frameRef.current);
-      }
-    };
-  }, []);
+  }, [tiltX]);
 
   const onMouseMove = (event: React.MouseEvent<HTMLElement>) => {
     if (shouldReduceMotion) return;
@@ -113,17 +118,8 @@ export default function Hero() {
     const relativeX = (event.clientX - bounds.left) / bounds.width - 0.5;
     const relativeY = (event.clientY - bounds.top) / bounds.height - 0.5;
 
-    pendingParallax.current = {
-      x: relativeX * 28,
-      y: relativeY * 20,
-    };
-
-    if (frameRef.current !== null) return;
-
-    frameRef.current = requestAnimationFrame(() => {
-      setParallax(pendingParallax.current);
-      frameRef.current = null;
-    });
+    mouseX.set(relativeX);
+    mouseY.set(relativeY);
   };
 
   const scrollToProjects = () => {
@@ -146,7 +142,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-[#020617]" />
         <motion.div
-          className="absolute -left-32 -top-20 h-96 w-96 rounded-full bg-indigo-500/18 blur-3xl"
+          className="absolute -left-32 -top-20 h-96 w-96 transform-gpu rounded-full bg-indigo-500/18 blur-2xl"
           animate={
             shouldReduceMotion
               ? undefined
@@ -156,10 +152,10 @@ export default function Hero() {
                 }
           }
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          style={{ transform: `translate3d(${parallax.x * 0.5}px, ${parallax.y * 0.5}px, 0)` }}
+          style={{ x: blob1X, y: blob1Y }}
         />
         <motion.div
-          className="absolute -right-32 top-1/4 h-104 w-104 rounded-full bg-violet-500/14 blur-3xl"
+          className="absolute -right-32 top-1/4 h-104 w-104 transform-gpu rounded-full bg-violet-500/14 blur-2xl"
           animate={
             shouldReduceMotion
               ? undefined
@@ -169,7 +165,7 @@ export default function Hero() {
                 }
           }
           transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-          style={{ transform: `translate3d(${parallax.x * -0.45}px, ${parallax.y * -0.45}px, 0)` }}
+          style={{ x: blob2X, y: blob2Y }}
         />
         <div className="absolute inset-0 bg-slate-950/70" />
       </div>
@@ -179,7 +175,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
-          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 p-4 shadow-2xl shadow-cyan-950/20 backdrop-blur-2xl sm:p-6 md:p-10"
+          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 transform-gpu p-4 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl sm:p-6 md:p-10"
         >
           <div className="pointer-events-none absolute inset-0 rounded-3xl border border-sky-200/20" aria-hidden="true" />
           <div
@@ -197,7 +193,7 @@ export default function Hero() {
 
           <div className="relative overflow-hidden border-b border-white/10 pb-3">
             <motion.div
-              className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.12em] text-slate-300 sm:text-[11px] sm:tracking-[0.18em]"
+              className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.12em] text-slate-300 transform-gpu will-change-transform sm:text-[11px] sm:tracking-[0.18em]"
               animate={shouldReduceMotion ? undefined : { x: ["0%", "-50%"] }}
               transition={
                 shouldReduceMotion
@@ -263,7 +259,7 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <div className="mt-6">
+            <div className="mt-6 transform-gpu">
               <JapaneseMorphingTitle />
             </div>
 
@@ -291,9 +287,9 @@ export default function Hero() {
               transition={{ duration: 0.55, delay: 0.2 }}
               aria-hidden="true"
             >
-              <div
+              <motion.div
                 className="h-px w-full bg-linear-to-r from-transparent via-sky-300/70 to-transparent"
-                style={{ transform: `rotate(${horizonTilt}deg)` }}
+                style={{ rotate: tiltRotation as any }}
               />
             </motion.div>
 
@@ -400,16 +396,17 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {cursorLocked && (
-        <div
-          className="pointer-events-none absolute inset-0 z-10"
-          aria-hidden="true"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg, rgba(125,211,252,0.04), rgba(125,211,252,0.04) 1px, transparent 1px, transparent 6px)",
-          }}
-        />
-      )}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-10"
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: cursorLocked ? 1 : 0 }}
+        transition={{ duration: 0.35 }}
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, rgba(125,211,252,0.04), rgba(125,211,252,0.04) 1px, transparent 1px, transparent 6px)",
+        }}
+      />
     </section>
   );
 }
