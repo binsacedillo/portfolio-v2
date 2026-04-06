@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import JapaneseMorphingTitle from "./JapaneseMorphingTitle";
 
 const TECH_STACK = [
@@ -289,6 +289,7 @@ export default function Hero() {
             >
               <motion.div
                 className="h-px w-full bg-linear-to-r from-transparent via-sky-300/70 to-transparent"
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
                 style={{ rotate: tiltRotation as any }}
               />
             </motion.div>
