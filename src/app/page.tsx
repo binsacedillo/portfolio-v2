@@ -4,6 +4,8 @@ import ScrollShowcase from "../components/landing/ScrollShowcase";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 
+export const dynamic = "force-static";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 flex flex-col">

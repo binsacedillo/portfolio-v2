@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import JapaneseMorphingTitle from "./JapaneseMorphingTitle";
 
 const TECH_STACK = [
@@ -29,6 +29,8 @@ export default function Hero() {
   const [localTime, setLocalTime] = useState("");
   const [tickerText, setTickerText] = useState(DEFAULT_TICKER);
   const [cursorLocked, setCursorLocked] = useState(false);
+  const containerRef = useRef<HTMLElement>(null);
+  const boundsRef = useRef<{ left: number; top: number; width: number; height: number } | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
   // Optimized high-performance parallax using direct DOM updates (bypassing React state)
@@ -111,10 +113,26 @@ export default function Hero() {
     return () => window.removeEventListener("deviceorientation", onOrientation, true);
   }, [tiltX]);
 
+  // Performance-optimized bounds caching to eliminate Forced Reflows
+  const updateBounds = () => {
+    if (containerRef.current) {
+      boundsRef.current = containerRef.current.getBoundingClientRect();
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.addEventListener("resize", updateBounds);
+    return () => window.removeEventListener("resize", updateBounds);
+  }, []);
+
   const onMouseMove = (event: React.MouseEvent<HTMLElement>) => {
     if (shouldReduceMotion) return;
 
-    const bounds = event.currentTarget.getBoundingClientRect();
+    // Use cached bounds to avoid a synchronous layout reflow on every mouse move
+    const bounds = boundsRef.current ?? event.currentTarget.getBoundingClientRect();
+    boundsRef.current ??= bounds;
+
     const relativeX = (event.clientX - bounds.left) / bounds.width - 0.5;
     const relativeY = (event.clientY - bounds.top) / bounds.height - 0.5;
 
@@ -134,38 +152,22 @@ export default function Hero() {
 
   return (
     <section
+      ref={containerRef}
       className="relative min-h-screen overflow-hidden bg-slate-950 px-3 py-6 text-white sm:px-5 sm:py-8 md:px-10"
       aria-label="Hero section"
       onMouseMove={onMouseMove}
+      onMouseEnter={updateBounds}
       style={{ cursor: cursorLocked ? CURSOR_LOCK : CURSOR_NORMAL }}
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-[#020617]" />
         <motion.div
           className="absolute -left-32 -top-20 h-96 w-96 transform-gpu rounded-full bg-indigo-500/18 blur-2xl"
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  x: [0, 18, 0],
-                  y: [0, 12, 0],
-                }
-          }
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          style={{ x: blob1X, y: blob1Y }}
+          style={{ x: blob1X, y: blob1Y, willChange: 'transform' }}
         />
         <motion.div
           className="absolute -right-32 top-1/4 h-104 w-104 transform-gpu rounded-full bg-violet-500/14 blur-2xl"
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  x: [0, -20, 0],
-                  y: [0, 16, 0],
-                }
-          }
-          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-          style={{ x: blob2X, y: blob2Y }}
+          style={{ x: blob2X, y: blob2Y, willChange: 'transform' }}
         />
         <div className="absolute inset-0 bg-slate-950/70" />
       </div>
@@ -176,6 +178,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
           className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 transform-gpu p-4 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl sm:p-6 md:p-10"
+          style={{ willChange: 'transform, opacity' }}
         >
           <div className="pointer-events-none absolute inset-0 rounded-3xl border border-sky-200/20" aria-hidden="true" />
           <div
@@ -195,6 +198,7 @@ export default function Hero() {
             <motion.div
               className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.12em] text-slate-300 transform-gpu will-change-transform sm:text-[11px] sm:tracking-[0.18em]"
               animate={shouldReduceMotion ? undefined : { x: ["0%", "-50%"] }}
+              style={{ willChange: 'transform' }}
               transition={
                 shouldReduceMotion
                   ? undefined
@@ -249,7 +253,7 @@ export default function Hero() {
                     src="/badges/ccna-introduction-to-networks.png"
                     alt="Cisco CCNA Certificate"
                     fill
-                    sizes="24px"
+                    sizes="(min-width: 640px) 24px, 20px"
                     className="object-contain"
                     priority
                   />
@@ -286,9 +290,9 @@ export default function Hero() {
                 {!imageError ? (
                   <Image
                     src="/profile-photo.jpg"
-                    alt=""
+                    alt="Vince Gio Acedillo Profile"
                     fill
-                    sizes="96px"
+                    sizes="(min-width: 1024px) 96px, 80px"
                     className="object-cover object-top"
                     priority
                     onError={() => setImageError(true)}
