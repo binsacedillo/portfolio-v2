@@ -1,16 +1,10 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import React, { useMemo } from "react";
 import { projects } from "~/data/projects";
 import {
-    cardStaggerVariants,
-    cardStaggerVariantsReduced,
-    featuredCardVariants,
-    featuredCardVariantsReduced,
-    sectionFadeIn,
-    sectionFadeInReduced,
     containerVariants,
     itemVariants,
 } from "~/lib/motion";
@@ -19,8 +13,6 @@ const BLUR_DATA_URL =
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJyBoZWlnaHQ9JzEwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48ZmlsdGVyIGlkPSdCMicgeD0nMCcgeT0nMCc+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0nNCcgLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9InVybCgjQjIpIiBvcGFjaXR5PScwLjInLz48L3N2Zz4=";
 
 export function ScrollShowcase() {
-    const prefersReducedMotion = useReducedMotion();
-
     const { featuredProjects, manifestGroups } = useMemo(() => {
         const featured = projects.filter((p) => p.isFeatured);
         const regular = projects.filter((p) => !p.isFeatured);
@@ -47,8 +39,6 @@ export function ScrollShowcase() {
             manifestGroups: groups,
         };
     }, []);
-
-    const featuredVariants = prefersReducedMotion ? featuredCardVariantsReduced : featuredCardVariants;
 
     return (
         <section
