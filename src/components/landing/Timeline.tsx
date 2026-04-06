@@ -18,22 +18,15 @@ type TimelineEvent = {
 
 const timeline: TimelineEvent[] = [
   {
-    year: "2021",
-    flightLevel: "FL010",
-    waypoint: "DISCO",
-    title: "Discovery of Web Development",
+    year: "2024-2028",
+    flightLevel: "FL390",
+    waypoint: "CRUIS",
+    title: "BSIT at FEU Tech",
     description:
-      "Completed TESDA HTML/CSS training during the pandemic and committed to a long-term software path.",
-    icon: <Code size={24} />,
-  },
-  {
-    year: "2022",
-    flightLevel: "FL090",
-    waypoint: "FOUND",
-    title: "Junior High School Graduate",
-    description:
-      "Finished junior high with a stronger technical foundation and clear direction toward IT.",
+      "Currently pursuing BS Information Technology (Web and Mobile Applications), focused on full-stack and product engineering.",
     icon: <GraduationCap size={24} />,
+    logo: "/feu-tech-logo.png",
+    logoAlt: "FEU Institute of Technology logo",
   },
   {
     year: "2024",
@@ -45,15 +38,22 @@ const timeline: TimelineEvent[] = [
     icon: <Rocket size={24} />,
   },
   {
-    year: "2024-2028",
-    flightLevel: "FL390",
-    waypoint: "CRUIS",
-    title: "BSIT at FEU Tech",
+    year: "2022",
+    flightLevel: "FL090",
+    waypoint: "FOUND",
+    title: "Junior High School Graduate",
     description:
-      "Currently pursuing BS Information Technology (Web and Mobile Applications), focused on full-stack and product engineering.",
+      "Finished junior high with a stronger technical foundation and clear direction toward IT.",
     icon: <GraduationCap size={24} />,
-    logo: "/feu-tech-logo.png",
-    logoAlt: "FEU Institute of Technology logo",
+  },
+  {
+    year: "2021",
+    flightLevel: "FL010",
+    waypoint: "DISCO",
+    title: "Discovery of Web Development",
+    description:
+      "Completed TESDA HTML/CSS training during the pandemic and committed to a long-term software path.",
+    icon: <Code size={24} />,
   },
 ];
 
@@ -69,16 +69,18 @@ export default function Timeline() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="w-full px-4 py-14">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-8 flex items-center justify-center gap-4">
-          <h2 className="text-center text-3xl font-bold text-white md:text-4xl">Flight Log</h2>
+    <section className="w-full px-4 py-20 relative overflow-hidden">
+      <div className="mx-auto max-w-5xl relative z-10">
+        <div className="mb-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            Flight Path
+          </h2>
         </div>
 
         <div ref={trackRef} className="relative mx-auto max-w-4xl">
-          {/* Vertical Flight Path Line */}
-          <div className="pointer-events-none absolute left-[125px] top-0 h-full w-px bg-slate-800" aria-hidden="true" />
-          <div className="pointer-events-none absolute left-[125px] top-0 h-full w-px bg-linear-to-b from-transparent via-sky-500/40 to-transparent" aria-hidden="true" />
+          {/* Central Flight Path Track */}
+          <div className="pointer-events-none absolute left-[125px] -translate-x-1/2 top-0 h-full w-px bg-slate-800/50" aria-hidden="true" />
+          <div className="pointer-events-none absolute left-[125px] -translate-x-1/2 top-0 h-full w-px bg-linear-to-b from-transparent via-sky-500/30 to-transparent" aria-hidden="true" />
 
           <motion.div
             variants={{
@@ -91,53 +93,59 @@ export default function Timeline() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            className="space-y-8"
+            className="space-y-12"
           >
             {timeline.map((event) => (
               <motion.article
                 key={event.year + event.waypoint}
                 variants={{
-                  hidden: { opacity: 0, y: 20, scale: 0.98 },
+                  hidden: { opacity: 0, y: 20 },
                   visible: {
                     opacity: 1,
                     y: 0,
-                    scale: 1,
-                    transition: { duration: 0.5, ease: "easeOut" },
+                    transition: { duration: 0.6, ease: "easeOut" },
                   },
                 }}
-                className="grid grid-cols-[96px_24px_1fr] items-start gap-4 transform-gpu"
+                className="grid grid-cols-[96px_58px_1fr] items-start gap-0 transform-gpu group"
               >
-                <div className="pt-1 text-right">
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-sky-300">{event.flightLevel}</p>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400">{event.year}</p>
+                {/* Telemetry (Left) */}
+                <div className="pt-6 text-right pr-6">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-sky-400/80 mb-1">{event.flightLevel}</p>
+                  <p className="font-mono text-[11px] font-bold text-slate-300">[{event.year}]</p>
                 </div>
 
-                <div className="pt-1 text-sky-300">
-                  <WaypointTriangle />
-                </div>
-
-                <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 shadow-lg transition-all duration-300 hover:border-sky-500/45 hover:shadow-sky-900/20">
-                  <div className="mb-2 flex flex-wrap items-center gap-2">
-                    <span className="rounded-md border border-sky-500/45 bg-sky-500/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-sky-300">
-                      [{event.waypoint}]
-                    </span>
-                    <span className="text-sky-400">{event.icon}</span>
-                    <h3 className="text-lg font-semibold text-white">{event.title}</h3>
-                    {event.logo && (
-                      <Image
-                        src={event.logo}
-                        alt={event.logoAlt ?? ""}
-                        width={22}
-                        height={22}
-                        className="object-contain opacity-85"
-                        style={{ width: "auto", height: "auto" }}
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = "none";
-                        }}
-                      />
-                    )}
+                {/* Waypoint Marker (Center) */}
+                <div className="relative h-full flex justify-center pt-6">
+                  <div className="relative z-10 text-sky-400/90 transition-transform duration-300 group-hover:scale-110 group-hover:text-sky-300">
+                    <WaypointTriangle />
                   </div>
-                  <p className="text-sm leading-relaxed text-slate-300 md:text-base">{event.description}</p>
+                </div>
+
+                {/* Mission Card (Right) */}
+                <div className="pl-6 pb-4">
+                  <div className="rounded-2xl border border-slate-800/60 bg-slate-900/40 backdrop-blur-md p-6 transition-all duration-500 hover:border-sky-500/30 hover:bg-slate-900/60 hover:shadow-[0_0_30px_rgba(14,165,233,0.1)] group-hover:translate-x-1">
+                    <div className="mb-3 flex flex-wrap items-center gap-3">
+                      <span className="rounded px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] bg-amber-500/10 text-amber-500/90 border border-amber-500/20">
+                        {event.waypoint}
+                      </span>
+                      <h3 className="text-xl font-bold text-white tracking-tight">{event.title}</h3>
+                      {event.logo && (
+                        <Image
+                          src={event.logo}
+                          alt={event.logoAlt ?? ""}
+                          width={24}
+                          height={24}
+                          className="object-contain opacity-90 transition-all duration-300"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = "none";
+                          }}
+                        />
+                      )}
+                    </div>
+                    <p className="text-slate-400 text-sm md:text-base leading-relaxed font-medium">
+                      {event.description}
+                    </p>
+                  </div>
                 </div>
               </motion.article>
             ))}

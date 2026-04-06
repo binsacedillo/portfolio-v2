@@ -73,7 +73,7 @@ export default function Hero() {
     const loadTicker = async () => {
       try {
         const response = await fetch(
-          "https://api.github.com/repos/binsacedillo/pilot-handbook/commits?per_page=1",
+          "https://api.github.com/repos/binsacedillo/portfolio-v2/commits?per_page=1",
         );
         if (!response.ok) return;
 
@@ -153,7 +153,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden bg-slate-950 px-3 py-6 text-white sm:px-5 sm:py-8 md:px-10"
+      className="relative min-h-[90vh] overflow-hidden bg-slate-950 px-3 py-4 text-white sm:px-5 sm:py-6 md:px-8"
       aria-label="Hero section"
       onMouseMove={onMouseMove}
       onMouseEnter={updateBounds}
@@ -172,12 +172,12 @@ export default function Hero() {
         <div className="absolute inset-0 bg-slate-950/70" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-3rem)] max-w-6xl items-start justify-center pb-8 pt-10 sm:min-h-[calc(100vh-4rem)] sm:items-center sm:pt-0">
+      <div className="relative z-10 mx-auto flex min-h-[calc(85vh-2rem)] max-w-5xl items-start justify-center pb-6 pt-8 sm:min-h-0 sm:items-center sm:pt-0">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
-          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 transform-gpu p-3.5 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl sm:p-6 md:p-10"
+          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 transform-gpu p-3.5 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl sm:p-5 md:p-8"
           style={{ willChange: 'transform, opacity' }}
         >
           <div className="pointer-events-none absolute inset-0 rounded-3xl border border-sky-200/20" aria-hidden="true" />
@@ -214,13 +214,13 @@ export default function Hero() {
             </motion.div>
           </div>
  
-          <div className="mt-8 grid grid-cols-1 gap-4 text-[9px] uppercase tracking-[0.05em] text-slate-300 sm:grid-cols-3 sm:mt-5 sm:gap-2.5 sm:text-xs sm:tracking-[0.22em]">
+          <div className="mt-6 grid grid-cols-1 gap-3 text-[9px] uppercase tracking-[0.05em] text-slate-300 sm:grid-cols-3 sm:mt-4 sm:gap-2.5 sm:text-xs sm:tracking-[0.22em]">
             <p className="font-mono text-center sm:text-left">Local Time: {localTime || "--:--:--"}</p>
             <p className="font-mono text-center text-sky-300">Status: Available for Work</p>
             <p className="font-mono text-center sm:text-right">Stack: Next.js / tRPC / Prisma</p>
           </div>
 
-          <div className="mt-6 flex flex-col items-center text-center">
+          <div className="mt-5 flex flex-col items-center text-center">
             <motion.div
               initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -228,7 +228,7 @@ export default function Hero() {
               className="flex flex-wrap items-center justify-center gap-3"
             >
               {/* Primary Status Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/35 bg-sky-500/15 px-4 py-2">
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/35 bg-sky-500/15 px-3 py-1.5 sm:px-4 sm:py-2">
                 <span className="relative flex h-3 w-3">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
                   <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500" />
@@ -282,7 +282,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.45, delay: 0.08 }}
-              className="relative mt-4 h-24 w-24"
+              className="relative mt-3.5 h-20 w-20"
               aria-hidden="true"
             >
               <div className="absolute inset-0 rounded-full bg-sky-500/15 blur-md" />
@@ -305,7 +305,7 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <div className="mt-6 transform-gpu">
+            <div className="mt-5 transform-gpu">
               <JapaneseMorphingTitle />
             </div>
 
@@ -313,14 +313,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.15 }}
-              className="mt-4 max-w-3xl space-y-4"
+              className="mt-3.5 max-w-2xl space-y-3"
             >
-              <p className="font-mono text-lg font-semibold uppercase tracking-[0.08em] text-sky-300 md:text-xl">
+              <p className="font-mono text-base font-semibold uppercase tracking-[0.08em] text-sky-300 md:text-lg">
                 Full-Stack Developer | Sophomore IT Undergraduate
               </p>
-              <p className="max-w-2xl text-base leading-relaxed text-slate-200 md:text-xl">
+              <p className="max-w-2xl text-sm leading-relaxed text-slate-200 md:text-base">
                 I build fast, accessible web apps that are clear to navigate and reliable to scale.
-                <span className="mt-2 block text-slate-300">
+                <span className="mt-1 block text-slate-300">
                   My focus is polished UI, dependable engineering, and offline-first experiences that serve real users.
                 </span>
               </p>
@@ -341,7 +341,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.div
-              className="mt-6 flex w-full flex-wrap justify-center gap-2"
+              className="mt-4 flex w-full flex-wrap justify-center gap-2"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.25 }}
@@ -352,7 +352,7 @@ export default function Hero() {
                   className="flex items-center gap-2 rounded-full border border-slate-700/80 bg-slate-900/65 px-3 py-2 text-xs font-semibold text-white shadow-lg transition-colors hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70"
                   {...interactiveProps}
                 >
-                  <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-800 px-1 font-mono text-[10px] font-bold text-sky-300">
+                   <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-800 px-1 font-mono text-[10px] font-bold text-sky-300">
                     {tech.icon}
                   </span>
                   <span>{tech.name}</span>
@@ -368,7 +368,7 @@ export default function Hero() {
             >
               <button
                 onClick={scrollToProjects}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-amber-300/45 bg-amber-500 px-6 py-3.5 font-mono text-sm font-bold uppercase tracking-[0.08em] text-black shadow-xl shadow-amber-500/30 transition-all hover:scale-[1.02] hover:bg-amber-400 focus:outline-none focus:ring-4 focus:ring-amber-300/60 sm:w-auto sm:px-8 sm:py-4"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-amber-300/45 bg-amber-500 px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.08em] text-black shadow-xl shadow-amber-500/30 transition-all hover:scale-[1.02] hover:bg-amber-400 focus:outline-none focus:ring-4 focus:ring-amber-300/60 sm:w-auto sm:px-7 sm:py-3.5"
                 aria-label="View my projects"
                 {...interactiveProps}
               >
@@ -378,7 +378,7 @@ export default function Hero() {
 
               <a
                 href="mailto:beansgioacedillo@gmail.com"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/85 px-6 py-3.5 font-bold text-white shadow-lg transition-all hover:border-slate-600 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-600/50 sm:w-auto sm:px-8 sm:py-4"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900/85 px-5 py-3 font-bold text-white shadow-lg transition-all hover:border-slate-600 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-600/50 sm:w-auto sm:px-7 sm:py-3.5"
                 aria-label="Contact me via email"
                 {...interactiveProps}
               >
@@ -430,8 +430,8 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            <nav className="mt-12 w-full max-w-3xl" aria-label="Flight path navigation">
-              <div className="mb-2 text-center">
+            <nav className="mt-8 w-full max-w-2xl" aria-label="Flight path navigation">
+              <div className="mb-1.5 text-center">
                 <span className="font-mono text-[8px] font-bold uppercase tracking-[0.3em] text-sky-400/60">
                   Mission Manifest
                 </span>
