@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Code, GraduationCap, Rocket } from "lucide-react";
 import Image from "next/image";
 import React, { useRef } from "react";
@@ -65,28 +65,8 @@ function WaypointTriangle() {
   );
 }
 
-function PlaneMarker() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M21.5 12.4c.7-.4.7-1.4-.1-1.7l-6.5-2.5-2.6-5.7c-.3-.7-1.3-.7-1.6 0L8.1 8.2 1.6 10.7c-.8.3-.8 1.3-.1 1.7l6.3 2.9 2.7 5.9c.3.7 1.3.7 1.6 0l2.7-5.9 6.3-2.9Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
 export default function Timeline() {
   const trackRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: trackRef,
-    offset: ["start 70%", "end 30%"],
-  });
-
-  // Optimized spring-based movement for the plane marker (Dynamic Percentage Path)
-  const springProgress = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
-  const planePath = useTransform(springProgress, [0, 1], ["0%", "97%"]);
 
   return (
     <section className="w-full px-4 py-14">
@@ -96,7 +76,9 @@ export default function Timeline() {
         </div>
 
         <div ref={trackRef} className="relative mx-auto max-w-4xl">
-          <div className="pointer-events-none absolute left-31 top-0 h-full w-0.5 bg-linear-to-b from-sky-300/30 via-cyan-300/65 to-sky-300/30 transform-gpu" />
+          {/* Vertical Flight Path Line */}
+          <div className="pointer-events-none absolute left-[125px] top-0 h-full w-px bg-slate-800" aria-hidden="true" />
+          <div className="pointer-events-none absolute left-[125px] top-0 h-full w-px bg-linear-to-b from-transparent via-sky-500/40 to-transparent" aria-hidden="true" />
 
           <motion.div
             variants={{
