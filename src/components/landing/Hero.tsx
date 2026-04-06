@@ -172,12 +172,12 @@ export default function Hero() {
         <div className="absolute inset-0 bg-slate-950/70" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-3rem)] max-w-6xl items-center justify-center pb-4 sm:min-h-[calc(100vh-4rem)]">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-3rem)] max-w-6xl items-start justify-center pb-8 pt-10 sm:min-h-[calc(100vh-4rem)] sm:items-center sm:pt-0">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
-          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 transform-gpu p-4 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl sm:p-6 md:p-10"
+          className="relative w-full overflow-hidden rounded-3xl border border-white/20 bg-white/3 transform-gpu p-3.5 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl sm:p-6 md:p-10"
           style={{ willChange: 'transform, opacity' }}
         >
           <div className="pointer-events-none absolute inset-0 rounded-3xl border border-sky-200/20" aria-hidden="true" />
@@ -193,7 +193,7 @@ export default function Hero() {
           <span className="absolute right-3 top-3 h-5 w-5 border-r border-t border-sky-300/60" aria-hidden="true" />
           <span className="absolute bottom-3 left-3 h-5 w-5 border-b border-l border-sky-300/60" aria-hidden="true" />
           <span className="absolute bottom-3 right-3 h-5 w-5 border-b border-r border-sky-300/60" aria-hidden="true" />
-
+ 
           <div className="relative overflow-hidden border-b border-white/10 pb-3">
             <motion.div
               className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.12em] text-slate-300 transform-gpu will-change-transform sm:text-[11px] sm:tracking-[0.18em]"
@@ -213,8 +213,8 @@ export default function Hero() {
               <span className="mx-8">{tickerText}</span>
             </motion.div>
           </div>
-
-          <div className="mt-4 grid grid-cols-1 gap-2 text-[11px] uppercase tracking-[0.22em] text-slate-300 sm:grid-cols-3 sm:text-xs">
+ 
+          <div className="mt-8 grid grid-cols-1 gap-4 text-[9px] uppercase tracking-[0.05em] text-slate-300 sm:grid-cols-3 sm:mt-5 sm:gap-2.5 sm:text-xs sm:tracking-[0.22em]">
             <p className="font-mono text-center sm:text-left">Local Time: {localTime || "--:--:--"}</p>
             <p className="font-mono text-center text-sky-300">Status: Available for Work</p>
             <p className="font-mono text-center sm:text-right">Stack: Next.js / tRPC / Prisma</p>
@@ -430,13 +430,18 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            <nav className="mt-8 w-full max-w-3xl" aria-label="Flight path navigation">
-              <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-2xl border border-white/15 bg-slate-900/65 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-200 backdrop-blur-md sm:text-xs sm:tracking-[0.2em]">
-                <span>Dep: MNL (About)</span>
+            <nav className="mt-12 w-full max-w-3xl" aria-label="Flight path navigation">
+              <div className="mb-2 text-center">
+                <span className="font-mono text-[8px] font-bold uppercase tracking-[0.3em] text-sky-400/60">
+                  Mission Manifest
+                </span>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5 rounded-2xl border border-white/15 bg-slate-900/65 px-3 py-3 font-mono text-[8px] uppercase tracking-[0.05em] text-slate-200 backdrop-blur-md sm:py-2.5 sm:text-xs sm:tracking-[0.2em]">
+                <span className="shrink-0 text-white/90">Dep: MNL (About)</span>
                 <span className="text-sky-300">-&gt;</span>
-                <span>Enr: Tech (Stack)</span>
+                <span className="shrink-0 text-white/90">Enr: Tech (Stack)</span>
                 <span className="text-sky-300">-&gt;</span>
-                <span>Arr: KSFO (Contact)</span>
+                <span className="shrink-0 text-white/90">Arr: KSFO (Contact)</span>
               </div>
             </nav>
           </div>

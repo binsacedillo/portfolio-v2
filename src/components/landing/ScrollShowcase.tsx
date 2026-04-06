@@ -48,9 +48,7 @@ export function ScrollShowcase() {
         };
     }, []);
 
-    const sectionVariants = prefersReducedMotion ? sectionFadeInReduced : sectionFadeIn;
     const featuredVariants = prefersReducedMotion ? featuredCardVariantsReduced : featuredCardVariants;
-    const cardVariants = prefersReducedMotion ? cardStaggerVariantsReduced : cardStaggerVariants;
 
     return (
         <section
