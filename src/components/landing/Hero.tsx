@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import JapaneseMorphingTitle from "./JapaneseMorphingTitle";
@@ -221,15 +221,57 @@ export default function Hero() {
               initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
-              className="inline-flex items-center gap-2 rounded-full border border-sky-400/35 bg-sky-500/15 px-4 py-2"
+              className="flex flex-wrap items-center justify-center gap-3"
             >
-              <span className="relative flex h-3 w-3">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500" />
-              </span>
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-sky-200 sm:text-sm">
-                Available for opportunities
-              </span>
+              {/* Primary Status Badge */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/35 bg-sky-500/15 px-4 py-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500" />
+                </span>
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-sky-200 sm:text-sm">
+                  Available for opportunities
+                </span>
+              </div>
+
+              {/* Verified Authority Badge (ISO UX Standard Clickable Verification) */}
+              <motion.a
+                href="https://www.credly.com/badges/206b15ee-497f-4ac9-a637-6c504f7e2f57/public_url"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, borderColor: "rgba(56,189,248,0.5)" }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative inline-flex items-center gap-2.5 rounded-full border border-sky-500/30 bg-slate-900/60 shadow-lg px-3.5 py-2 transition-all cursor-pointer"
+                aria-label="Verify Cisco CCNA Certification on Credly"
+              >
+                <div className="relative h-5 w-5 sm:h-6 sm:w-6 transform-gpu">
+                  <Image
+                    src="/badges/ccna-introduction-to-networks.png"
+                    alt="Cisco CCNA Certificate"
+                    fill
+                    sizes="24px"
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-sky-400/90 sm:text-[11px]">
+                    Cisco Certified
+                  </span>
+                  <span className="h-2 w-px bg-sky-500/30" />
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-tight text-white sm:text-[11px]">
+                    CCNA
+                  </span>
+                </div>
+                <div className="ml-0.5 text-sky-400 group-hover:text-white transition-colors">
+                  <ExternalLink size={12} />
+                </div>
+                
+                {/* ISO UX - Progressive Disclosure Tooltip */}
+                <div className="absolute -bottom-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-900 px-3 py-1.5 text-[10px] font-medium text-white opacity-0 transition-all group-hover:opacity-100 group-hover:translate-y-1 border border-slate-700 shadow-2xl pointer-events-none z-50">
+                  CCNA: Introduction to Networks • Click to Verify
+                </div>
+              </motion.a>
             </motion.div>
 
             <motion.div
