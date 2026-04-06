@@ -260,7 +260,7 @@ export default function Hero() {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-sky-400/90 sm:text-[11px]">
-                    Cisco Certified
+                    Cisco Verified
                   </span>
                   <span className="h-2 w-px bg-sky-500/30" />
                   <span className="font-mono text-[10px] font-bold uppercase tracking-tight text-white sm:text-[11px]">
