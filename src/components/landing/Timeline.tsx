@@ -84,9 +84,9 @@ export default function Timeline() {
     offset: ["start 70%", "end 30%"],
   });
 
-  // Optimized spring-based movement for the plane marker (no React state updates)
+  // Optimized spring-based movement for the plane marker (Dynamic Percentage Path)
   const springProgress = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
-  const planeOffset = useTransform(springProgress, [0, 1], [10, 620]);
+  const planePath = useTransform(springProgress, [0, 1], ["0%", "97%"]);
 
   return (
     <section className="w-full px-4 py-14">
@@ -96,11 +96,11 @@ export default function Timeline() {
         </div>
 
         <div ref={trackRef} className="relative mx-auto max-w-4xl">
-          <div className="pointer-events-none absolute left-29 top-0 h-full w-0.5 bg-linear-to-b from-sky-300/30 via-cyan-300/65 to-sky-300/30 transform-gpu" />
+          <div className="pointer-events-none absolute left-31 top-0 h-full w-0.5 bg-linear-to-b from-sky-300/30 via-cyan-300/65 to-sky-300/30 transform-gpu" />
 
           <motion.div
-            className="pointer-events-none absolute left-26 top-0 text-sky-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)] transform-gpu"
-            style={{ y: planeOffset }}
+            className="pointer-events-none absolute left-28 top-0 text-sky-300 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)] transform-gpu"
+            style={{ top: planePath }}
             aria-hidden="true"
           >
             <PlaneMarker />
