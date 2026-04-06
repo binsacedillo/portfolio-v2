@@ -88,7 +88,7 @@ export function ScrollShowcase() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                 >
-                    <div className="relative border-2 border-sky-500/30 rounded-2xl overflow-hidden shadow-2xl transform-gpu transition-all duration-300 focus-within:ring-2 focus-within:ring-sky-400/50 hover:border-sky-500/60" style={{ background: 'var(--gradient-card-bg)', boxShadow: 'var(--shadow-featured-hover)' }}>
+                    <div className="relative border-2 border-sky-500/30 rounded-2xl overflow-hidden shadow-2xl transform-gpu transition-all duration-300 focus-within:ring-2 focus-within:ring-sky-400/50 hover:border-sky-500/60" style={{ background: 'var(--gradient-card-bg)', boxShadow: 'var(--shadow-featured-hover)', willChange: 'transform, opacity' }}>
                         <div className="absolute top-4 left-4 z-10 rounded-md border border-sky-500/45 bg-slate-900/75 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-sky-300">
                             Mission Manifest
                         </div>
@@ -261,11 +261,13 @@ export function ScrollShowcase() {
                                     {group.items.map((project, idx) => (
                             <motion.div
                                 key={project.title + idx}
-                                className="bg-slate-900/80 border border-slate-800 transform-gpu rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-all duration-300 flex flex-col h-full hover:shadow-2xl hover:shadow-sky-500/10 hover:scale-[1.03] focus-within:ring-2 focus-within:ring-sky-400/50"
+                                className="bg-slate-900/80 border border-slate-800 transform-gpu rounded-xl overflow-hidden shadow-lg hover:border-sky-500/50 transition-all duration-300 flex flex-col h-full hover:shadow-2xl hover:shadow-sky-500/10 focus-within:ring-2 focus-within:ring-sky-400/50"
+                                style={{ willChange: 'transform, opacity' }}
                                 variants={cardVariants}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true, amount: 0.2 }}
+                                viewport={{ once: true, amount: 0.1 }}
+                                whileHover={{ scale: 1.02 }}
                                 custom={idx + groupIndex * 2}
                             >
                                 {/* Project Image */}
