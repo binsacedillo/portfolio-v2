@@ -84,6 +84,12 @@ export function ScrollShowcase() {
                                 Mission Manifest
                             </div>
 
+                            {featuredProject.startDate && (
+                                <div className="absolute top-4 left-44 z-10 rounded-md border border-amber-500/45 bg-slate-900/75 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-amber-300">
+                                    Initiated: {featuredProject.startDate}
+                                </div>
+                            )}
+
                             <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300 shadow-lg">
                                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 opacity-80" />
                                 Status: Operational
@@ -294,6 +300,11 @@ export function ScrollShowcase() {
                                                     {project.status && (
                                                         <span className="inline-block bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-tight">
                                                             {project.status}
+                                                        </span>
+                                                    )}
+                                                    {project.startDate && (
+                                                        <span className="inline-block bg-slate-800 border border-slate-700 text-slate-400 text-[10px] font-mono px-2 py-1 rounded-md uppercase tracking-tight">
+                                                            Init: {project.startDate}
                                                         </span>
                                                     )}
                                                 </div>

@@ -14,6 +14,7 @@ export type Project = {
     tags?: string[];
     image?: string;
     status?: string;
+    startDate?: string;
 };
 
 export const projects: Project[] = [
@@ -29,6 +30,7 @@ export const projects: Project[] = [
             { label: "Performance", value: "99/100" },
             { label: "Architecture", value: "T3 Stack" },
         ],
+        startDate: "Apr 2026",
         liveUrl: "https://faithfeed.vercel.app/",
         repoUrl: "https://github.com/binsacedillo/faithfeed-visita-iglesia",
         tags: [
@@ -56,6 +58,7 @@ export const projects: Project[] = [
             { label: "Performance", value: "98/100" },
             { label: "Tech Stack", value: "Full-Stack" },
         ],
+        startDate: "Feb 2026",
         liveUrl: "https://pilot-handbook.vercel.app/",
         repoUrl: "https://github.com/binsacedillo/pilot-handbook",
         tags: [
@@ -77,6 +80,7 @@ export const projects: Project[] = [
         icon: <Shield size={32} />,
         category: "Interactive UI",
         image: "/feuroster.jpg",
+        startDate: "Mar 2026",
         liveUrl: "https://feu-tamaraws-roster.vercel.app/",
         repoUrl: "https://github.com/binsacedillo/feu-tamaraws-roster",
         tags: [
@@ -108,6 +112,7 @@ export const projects: Project[] = [
             "Interoperability",
         ],
         image: "/fhirproject.jpg",
+        startDate: "Feb 2026",
         repoUrl: "https://github.com/yourusername/fhir_project",
         liveUrl: "https://fhir-project-zeta.vercel.app",
     },
@@ -129,24 +134,16 @@ export const projects: Project[] = [
             "Education Tech",
         ],
         image: "/japaneselangwebsite.jpg",
+        startDate: "Jul 2023",
         repoUrl: "https://github.com/binsacedillo/JapLanguageLearningWebsite",
     },
     {
-        title: "News Website",
-        description: "A responsive news platform featuring breaking news carousel, dynamic content loading, search functionality, and an intuitive footer design.",
-        icon: <Newspaper size={32} />,
-        category: "Frontend",
-        tags: ["React", "Carousel", "Search", "Responsive", "Frontend", "News"],
-        image: "/newswebsite.png",
-        repoUrl: "https://github.com/binsacedillo/newsWebsite",
-    },
-    {
-        title: "Idol Group Website",
-        description: "A multi-page responsive website showcasing styled-components architecture and React Router for seamless navigation across pages.",
-        icon: <Users size={32} />,
-        category: "Frontend",
-        tags: ["React", "Styled Components", "React Router", "Responsive", "Frontend", "Entertainment"],
-        image: "/idolwebsite.png",
-        repoUrl: "https://github.com/binsacedillo/IdolWebsite",
+        title: "MySQL Authentication Layer",
+        description: "A secure backend implementation for user authentication and relational database management. Features structured SQL schemas, password hashing, and session management.",
+        icon: <Shield size={32} />,
+        category: "Backend",
+        tags: ["MySQL", "Auth", "Backend", "SQL", "Security"],
+        startDate: "Sep 2023",
+        repoUrl: "https://github.com/binsacedillo/REACTMYSQL",
     },
 ];
