@@ -137,13 +137,4 @@ export const projects: Project[] = [
         startDate: "Jul 2023",
         repoUrl: "https://github.com/binsacedillo/JapLanguageLearningWebsite",
     },
-    {
-        title: "MySQL Authentication Layer",
-        description: "A secure backend implementation for user authentication and relational database management. Features structured SQL schemas, password hashing, and session management.",
-        icon: <Shield size={32} />,
-        category: "Backend",
-        tags: ["MySQL", "Auth", "Backend", "SQL", "Security"],
-        startDate: "Sep 2023",
-        repoUrl: "https://github.com/binsacedillo/REACTMYSQL",
-    },
 ];
