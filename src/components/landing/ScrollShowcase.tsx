@@ -317,13 +317,13 @@ export function ScrollShowcase() {
  
                                                 {/* Tags */}
                                                 {project.tags && (
-                                                    <div className="flex flex-wrap gap-2 mb-4">
-                                                        {project.tags.map((tag, idx) => (
+                                                    <div className="flex flex-wrap gap-1.5 mb-4">
+                                                        {project.tags.slice(0, 5).map((tag, idx) => (
                                                             <span
                                                                 key={idx}
-                                                                className="font-mono text-[11px] uppercase tracking-widest text-slate-200 px-2 py-1 rounded-sm border border-slate-600 transition-colors duration-200"
+                                                                className="bg-sky-500/15 border border-sky-500/40 text-sky-300 text-xs px-2.5 py-1 rounded-full font-medium"
                                                             >
-                                                                [ {tag} ]
+                                                                {tag}
                                                             </span>
                                                         ))}
                                                     </div>
