@@ -214,9 +214,8 @@ export default function Hero() {
             </motion.div>
           </div>
  
-          <div className="mt-6 grid grid-cols-1 gap-3 text-[9px] uppercase tracking-[0.05em] text-slate-300 sm:grid-cols-3 sm:mt-4 sm:gap-2.5 sm:text-xs sm:tracking-[0.22em]">
+          <div className="mt-6 grid grid-cols-1 gap-3 text-[9px] uppercase tracking-[0.05em] text-slate-300 sm:grid-cols-2 sm:mt-4 sm:gap-2.5 sm:text-xs sm:tracking-[0.22em]">
             <p className="font-mono text-center sm:text-left">Local Time: {localTime || "--:--:--"}</p>
-            <p className="font-mono text-center text-sky-300">Status: Available for Work</p>
             <p className="font-mono text-center sm:text-right">Stack: Next.js / tRPC / Prisma</p>
           </div>
 
@@ -228,13 +227,13 @@ export default function Hero() {
               className="flex flex-wrap items-center justify-center gap-3"
             >
               {/* Primary Status Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/35 bg-sky-500/15 px-3 py-1.5 sm:px-4 sm:py-2">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1.5 sm:px-4 sm:py-2">
                 <span className="relative flex h-3 w-3">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
-                  <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
                 </span>
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-sky-200 sm:text-sm">
-                  Available for opportunities
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200 sm:text-sm">
+                  Available for work
                 </span>
               </div>
 
@@ -316,7 +315,7 @@ export default function Hero() {
               className="mt-3.5 max-w-2xl space-y-3"
             >
               <p className="font-mono text-base font-semibold uppercase tracking-[0.08em] text-sky-300 md:text-lg">
-                Full-Stack Developer | Sophomore IT Undergraduate
+                Full-Stack Developer
               </p>
               <p className="max-w-2xl text-sm leading-relaxed text-slate-200 md:text-base">
                 I build fast, accessible web apps that are clear to navigate and reliable to scale.

@@ -5,7 +5,7 @@ import { Geist } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Vince Gio Acedillo | Full-Stack Developer Portfolio",
-  description: "Senior IT Student and Full-Stack Developer specializing in Next.js, TypeScript, and Python. Explore my projects and professional certifications.",
+  description: "Full-Stack Developer specializing in Next.js, TypeScript, and Python. Explore my projects and professional certifications.",
   verification: {
     google: "googleb3cc5490ff4f97f0",
   },
