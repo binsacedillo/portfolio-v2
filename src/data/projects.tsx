@@ -48,8 +48,8 @@ export const projects: Project[] = [
     },
     {
         title: "Pilot Handbook — Precision Logbook & Compliance Dashboard",
-        description: "A professional-grade aviation suite built with Next.js 16 and tRPC. Beyond a standard logbook, it features an automated Compliance Engine that monitors pilot currency (90-day recency), medical status, and flight legality in real-time. Includes a 'Safety Snapshot' system for logging critical preflight calculations (Weight & Balance, Density Altitude) and an instructor-verifiable audit trail with digital signature support.",
-        valueProposition: "Modernizing pilot record-keeping with automated compliance monitoring and safety-critical audit trails.",
+        description: "A digital guided flight training companion and mentor built on Next.js 16, React 19, and tRPC (T3 Stack) with PostgreSQL. It solves manual logbook math errors, disconnected preflight calculations, and the lack of real-time safety currency warnings. Features include secure row-level multi-tenancy (IDOR protection), aviation math engines (Density Altitude, Weight & Balance), visibility/wind limit alerts, digital instructor sign-offs, and automatic security audit logging with IP/UA tracking.",
+        valueProposition: "A digital flight training companion and mentor resolving manual logbook complexity with real-time safety checks and secure audit trails.",
         icon: <Plane size={48} />,
         category: "Full-Stack",
         isFeatured: true,
