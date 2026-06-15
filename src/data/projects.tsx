@@ -31,7 +31,7 @@ export const projects: Project[] = [
             { label: "Architecture", value: "T3 Stack" },
         ],
         startDate: "Apr 2026",
-        liveUrl: "https://faithfeed.vercel.app/",
+        liveUrl: "https://faithfeed-visita-iglesia.vercel.app/",
         repoUrl: "https://github.com/binsacedillo/faithfeed-visita-iglesia",
         tags: [
             "Next.js 15",
