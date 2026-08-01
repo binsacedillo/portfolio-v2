@@ -272,7 +272,7 @@ export default function Hero() {
                 
                 {/* ISO UX - Progressive Disclosure Tooltip */}
                 <div className="absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-900 px-3 py-1.5 text-[10px] font-medium text-white opacity-0 transition-all group-hover:opacity-100 group-hover:-translate-y-1 border border-slate-700 shadow-2xl pointer-events-none z-50">
-                  CCNA: Introduction to Networks • Click to Verify
+                  CCNA: Introduction to Networks - Click to Verify
                 </div>
               </motion.a>
             </motion.div>

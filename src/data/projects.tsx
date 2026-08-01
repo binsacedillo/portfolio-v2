@@ -1,5 +1,5 @@
 import React from "react";
-import { Languages, Newspaper, Plane, Users, Activity, Shield, Church } from "lucide-react";
+import { Languages, Plane, Activity, Shield, Church } from "lucide-react";
 
 export type Project = {
     title: string;
@@ -47,7 +47,7 @@ export const projects: Project[] = [
         ],
     },
     {
-        title: "Pilot Handbook — Precision Logbook & Compliance Dashboard",
+        title: "Pilot Handbook - Precision Logbook & Compliance Dashboard",
         description: "A digital guided flight training companion and mentor built on Next.js 16, React 19, and tRPC (T3 Stack) with PostgreSQL. It solves manual logbook math errors, disconnected preflight calculations, and the lack of real-time safety currency warnings. Features include secure row-level multi-tenancy (IDOR protection), aviation math engines (Density Altitude, Weight & Balance), visibility/wind limit alerts, digital instructor sign-offs, and automatic security audit logging with IP/UA tracking.",
         valueProposition: "A digital flight training companion and mentor resolving manual logbook complexity with real-time safety checks and secure audit trails.",
         icon: <Plane size={48} />,
