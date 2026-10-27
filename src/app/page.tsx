@@ -4,6 +4,7 @@ import { certifications } from "~/data/certifications";
 import TechnologyStrip from "~/components/TechnologyStrip";
 import VGAArtwork from "~/components/vga/VGAArtwork";
 import SiteNavigation from "~/components/SiteNavigation";
+import { ArrowRight, ArrowUp, ArrowUpRight } from "lucide-react";
 
 export const dynamic = "force-static";
 
@@ -19,7 +20,7 @@ const path = [
 ];
 
 function Outbound({ href, children }: { href: string; children: React.ReactNode }) {
-  return <a className="journal-link" href={href} target="_blank" rel="noopener noreferrer">{children} <span aria-hidden="true">↗</span></a>;
+  return <a className="journal-link" href={href} target="_blank" rel="noopener noreferrer">{children} <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.75} /></a>;
 }
 
 export default function Home() {
@@ -27,23 +28,13 @@ export default function Home() {
     <main id="top">
       <SiteNavigation />
 
-      <section className="journal-container grid gap-12 py-20 sm:py-28 md:grid-cols-[1.2fr_0.8fr] md:items-center md:gap-10 lg:gap-16" aria-labelledby="intro-title">
-        <div className="vga-hero-copy relative isolate">
-          <VGAArtwork />
-          <div className="relative z-10">
-            <p className="journal-label"><span className="journal-dot" /> MANILA, PHILIPPINES / OPEN TO COLLABORATION</p>
-            <h1 id="intro-title" className="mt-7 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-6xl lg:text-7xl"><span className="hero-name-scan">Vince Gio<br />Acedillo<span className="text-[var(--accent)]">.</span></span></h1>
-            <p className="mt-7 text-xl font-medium sm:text-2xl">Full-Stack Developer · Web &amp; Mobile Applications</p>
-            <p className="journal-copy mt-4 max-w-xl">I build useful web applications and clear interfaces, with care for the systems behind them and the people using them.</p>
-            <div className="mt-9 flex flex-wrap items-center gap-7"><a className="journal-button" href="#projects">Explore work ↗</a><a className="journal-link" href="mailto:beansgioacedillo@gmail.com">Get in touch ↗</a></div>
-          </div>
-        </div>
-        <figure className="editorial-portrait mx-auto w-full max-w-[420px] md:ml-auto">
+      <section className="mobile-hero journal-container grid gap-12 py-20 sm:py-28 md:grid-cols-[1.2fr_0.8fr] md:items-center md:gap-10 lg:gap-16" aria-labelledby="intro-title">
+        <figure className="editorial-portrait order-first mx-auto w-full max-w-[420px] sm:order-last md:ml-auto">
           <div className="portrait-archive-head journal-label"><span>V.G.A. / IDENTITY ARCHIVE</span><span>FIG. 001</span></div>
           <div className="portrait-stage">
             <p className="portrait-vertical-id" aria-hidden="true">V.G.A. / IDENTITY 001</p>
             <div className="portrait-frame">
-              <Image src="/profile-photo.jpg" alt="Portrait of Vince Gio Acedillo" fill priority quality={95} sizes="(max-width: 640px) calc(100vw - 4rem), 380px" className="object-cover" />
+              <Image src="/profile-photo.jpg" alt="Portrait of Vince Gio Acedillo" fill priority quality={95} sizes="(max-width: 640px) 192px, 380px" className="object-cover" />
             </div>
           </div>
           <figcaption className="portrait-caption">
@@ -51,6 +42,16 @@ export default function Home() {
             <div className="portrait-meta"><span>WEB &amp; MOBILE APPLICATIONS</span><span>PH / MNL</span></div>
           </figcaption>
         </figure>
+        <div className="vga-hero-copy relative isolate">
+          <VGAArtwork />
+          <div className="relative z-10">
+            <p className="journal-label"><span className="journal-dot" /> CALOOCAN CITY, PHILIPPINES / OPEN TO COLLABORATION</p>
+            <h1 id="intro-title" className="mt-7 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-6xl lg:text-7xl"><span className="hero-name-scan">Vince Gio<br />Acedillo<span className="text-[var(--accent)]">.</span></span></h1>
+            <p className="mt-7 text-xl font-medium sm:text-2xl">Full-Stack Developer · Web &amp; Mobile Applications</p>
+            <p className="journal-copy mt-4 max-w-xl">I build useful web applications and clear interfaces, with care for the systems behind them and the people using them.</p>
+            <div className="mt-9 flex flex-wrap items-center gap-7"><a className="journal-button" href="#projects">Explore work <ArrowRight aria-hidden="true" size={16} strokeWidth={1.75} /></a><a className="journal-link" href="mailto:beansgioacedillo@gmail.com">Get in touch <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.75} /></a></div>
+          </div>
+        </div>
       </section>
 
       <TechnologyStrip />
@@ -87,8 +88,8 @@ export default function Home() {
         <ol>{path.map(([year, title, detail]) => <li key={title} className="journal-waypoint relative border-l border-[var(--line)] pb-10 pl-8 last:pb-0"><p className="journal-label">{year}</p><h3 className="mt-2 text-lg font-semibold">{title}</h3><p className="journal-copy mt-2">{detail}</p></li>)}</ol>
       </div></section>
 
-      <section id="contact" className="journal-section" aria-labelledby="contact-title"><div className="journal-container"><p className="journal-label">04 / CONTACT</p><h2 id="contact-title" className="mt-5 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">Let&apos;s build something useful.</h2><p className="journal-copy mt-6">Have a project or opportunity in mind? I would like to hear about it.</p><a className="journal-button mt-9 inline-flex" href="mailto:beansgioacedillo@gmail.com">Email me ↗</a></div></section>
-      <footer className="border-t border-[var(--line)]"><div className="journal-container flex flex-col gap-5 py-7 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Vince Gio Acedillo</p><div className="flex flex-wrap gap-6"><Outbound href="https://github.com/binsacedillo">GitHub</Outbound><Outbound href="https://www.linkedin.com/in/vince-gio-acedillo-449688318/">LinkedIn</Outbound><a className="journal-link" href="#top">Back to top ↑</a></div></div></footer>
+      <section id="contact" className="journal-section" aria-labelledby="contact-title"><div className="journal-container"><p className="journal-label">04 / CONTACT</p><h2 id="contact-title" className="mt-5 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">Let&apos;s build something useful.</h2><p className="journal-copy mt-6">Have a project or opportunity in mind? I would like to hear about it.</p><a className="journal-button mt-9 inline-flex" href="mailto:beansgioacedillo@gmail.com">Email me <ArrowUpRight aria-hidden="true" size={16} strokeWidth={1.75} /></a></div></section>
+      <footer className="border-t border-[var(--line)]"><div className="journal-container flex flex-col gap-5 py-7 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between"><p>© 2026 Vince Gio Acedillo</p><div className="flex flex-wrap gap-6"><Outbound href="https://github.com/binsacedillo">GitHub</Outbound><Outbound href="https://www.linkedin.com/in/vince-gio-acedillo-449688318/">LinkedIn</Outbound><a className="journal-link" href="#top">Back to top <ArrowUp aria-hidden="true" size={14} strokeWidth={1.75} /></a></div></div></footer>
     </main>
   );
 }

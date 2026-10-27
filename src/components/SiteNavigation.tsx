@@ -5,12 +5,13 @@ import { useEffect, useRef, useState } from "react";
 const links = [
   { id: "projects", label: "Work" },
   { id: "about", label: "About" },
+  { id: "timeline", label: "Journey" },
   { id: "contact", label: "Contact" },
 ];
 
-function SectionLinks({ className, active, onNavigate }: { className: string; active: string | null; onNavigate: (id: string) => void }) {
+function SectionLinks({ className, active, onNavigate, id, hidden }: { className: string; active: string | null; onNavigate: (id: string) => void; id?: string; hidden?: boolean }) {
   return (
-    <nav className={className} aria-label="Page sections">
+    <nav id={id} className={className} aria-label="Page sections" hidden={hidden}>
       {links.map(({ id, label }) => (
         <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={() => onNavigate(id)}>
           {label}
@@ -22,7 +23,9 @@ function SectionLinks({ className, active, onNavigate }: { className: string; ac
 
 export default function SiteNavigation() {
   const progressRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [active, setActive] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     let frame = 0;
@@ -59,6 +62,20 @@ export default function SiteNavigation() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
+
   return (
     <>
       <div className="page-progress" aria-hidden="true">
@@ -70,9 +87,31 @@ export default function SiteNavigation() {
             VA<span className="text-[var(--accent)]">.</span>
           </a>
           <SectionLinks className="desktop-section-nav" active={active} onNavigate={setActive} />
+          <button
+            ref={menuButtonRef}
+            className={`mobile-menu-trigger${menuOpen ? " is-open" : ""}`}
+            type="button"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-section-menu"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className="hamburger-line hamburger-line-top" aria-hidden="true" />
+            <span className="hamburger-line hamburger-line-middle" aria-hidden="true" />
+            <span className="hamburger-line hamburger-line-bottom" aria-hidden="true" />
+          </button>
         </div>
+        <SectionLinks
+          className="mobile-section-menu"
+          active={active}
+          onNavigate={(id) => {
+            setActive(id);
+            setMenuOpen(false);
+          }}
+          id="mobile-section-menu"
+          hidden={!menuOpen}
+        />
       </header>
-      <SectionLinks className="mobile-section-dock" active={active} onNavigate={setActive} />
     </>
   );
 }
