@@ -288,7 +288,7 @@ export default function Hero() {
               <div className="relative h-full w-full overflow-hidden rounded-full border border-white/20 bg-slate-900 shadow-xl shadow-sky-950/30">
                 {!imageError ? (
                   <Image
-                    src="/profile-photo.jpg"
+                    src="/profile-photo.png"
                     alt="Vince Gio Acedillo Profile"
                     fill
                     sizes="(min-width: 1024px) 96px, 80px"
