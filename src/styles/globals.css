@@ -128,7 +128,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 .technology-toggle { min-height: 2.75rem; padding-inline: .7rem; color: var(--accent); font-size: .75rem; font-weight: 600; cursor: pointer; }
 .technology-toggle:hover { color: var(--paper); }
 .technology-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.technology-viewport { overflow: hidden; }
+.technology-viewport { width: min(100% - 2.5rem, 70rem); margin-inline: auto; overflow: hidden; }
 .technology-track { display: flex; width: max-content; animation: technology-drift 38s linear infinite; }
 .technology-track.is-paused, .technology-viewport:hover .technology-track { animation-play-state: paused; }
 .technology-list { display: flex; flex: 0 0 auto; align-items: center; gap: 3rem; padding-right: 3rem; }
@@ -206,7 +206,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
   .journal-container { width: min(100% - 2rem, 70rem); }
   .journal-label { font-size: .62rem; }
   .technology-toggle, .technology-list-copy { display: none; }
-  .technology-viewport { overflow-x: auto; padding-inline: 1rem; padding-bottom: .5rem; }
+  .technology-viewport { width: min(100% - 2rem, 70rem); overflow-x: auto; padding-bottom: .5rem; }
   .technology-track { animation: none; }
   .technology-list { gap: 2rem; padding-right: 1rem; }
 }
@@ -219,5 +219,5 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
   .project-index-number { animation: none !important; color: var(--accent); }
   .technology-toggle, .technology-list-copy { display: none; }
   .technology-track { animation: none; }
-  .technology-viewport { overflow-x: auto; padding-inline: 1rem; }
+  .technology-viewport { width: min(100% - 2rem, 70rem); overflow-x: auto; }
 }
